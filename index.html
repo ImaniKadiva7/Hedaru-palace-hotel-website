@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title>Hedaru Palace Hotel Official Website</title>
+    <meta name = "viewport" content = "width = device - width, initial-scale = 1">
+    <script src = "https://kit.fontawesome.com/dbed6b6114.js" crossorigin = "anonymous"></script>
+    <link rel = "Icon" href = "images/logo.png" type = "image/png">
+    <link rel = "stylesheet" href = "styles.css">
+  </head>
+
+
+  <body>
+
+
+    <!----header----->
+    <header class = "header" id = "header">
+      <div class = "head-top">
+        <div class = "site-name">
+          <span>HEDARU PALACE HOTEL</span>
+        </div>
+        <div class = "site-nav">
+          <span id = "nav-btn">MENU <i class = "fas fa-bars"></i></span>
+        </div>
+      </div>
+
+      <div class = "head-bottom flex">
+        <h2>NICE AND COMFORTABLE PLACE TO STAY</h2>
+        <p>
+          Located in Hedaru, Hedaru Palace Hotel features a garden and a bar. 
+          Boasting a 24-hour front desk, this property also provides guests with 
+          a restaurant. The accommodation features an ATM, room service and buying 
+          tickets for guests. The units in the hotel are fitted with a flat-screen TV. 
+          Hedaru Palace Hotel offers certain rooms that feature mountain views, and all 
+          rooms are fitted with a private bathroom with a bath. Guest rooms at the 
+          accommodation have air conditioning and a desk. Hedaru Palace Hotel offers a 
+          continental or Full English/Irish breakfast. You can play darts at the hotel, 
+          and car hire is available.
+        </p>
+        <button type = "button" class = "head-btn">
+          GET STARTED
+        </button>
+      </div>
+    </header>
+    <!-----END OF HEADER --->
+
+    <!-----side-nav------>
+    <div class = "sidenav" id = "sidenav">
+      <span class = "cancel-btn" id = "cancel-btn">
+        <i class = "fas fa-times"></i>
+      </span>
+
+      <ul class = "navbar">
+        <li><a href = "#header">home</a></li>
+        <li><a href = "#services">services</a></li>
+        <li><a href = "#rooms">rooms</a></li>
+      </ul>
+    </div>
+    <!--------end of side navbar---------->
+
+    <!-----full screen model------>
+    <div id = "modal"></div>
+    <!-----end of full screen model----->
+
+    <!-----body content------>
+    <section class = "services sec-width" id = "services">
+      <div class = "title">
+        <h2>services</h2>
+      </div>
+      <div class = "services-container">
+        <!-----single service----->
+        <article class = "service">
+          <div class = "service-icon">
+            <span>
+              <i class = "fas fa-utensils"></i>
+            </span>
+          </div>
+          <div class = "service-content">
+            <h2>Food Service/ Food Runner</h2>
+            <p>
+              The pain itself is important to the main adipisicing elite. 
+              It is the just man whom pardon never prevents, therefore, from 
+              the harsh words of pleasures we accuse him of, nor of choosing, 
+              as they occur, the least of these kinds of annoyances and duties 
+              born.
+            </p>
+            <button type = "button" class = "btn">Know More</button>
+          </div>
+        </article>
+        <!------end of single service-------->
+         <!-----single service----->
+         <article class = "service">
+          <div class = "service-icon">
+            <span>
+              <i class = "fas fa-swimming-pool"></i>
+            </span>
+          </div>
+          <div class = "service-content">
+            <h2>Refreshment</h2>
+            <p>
+              The pain itself is important to the main adipisicing elite. 
+              It is the just man whom pardon never prevents, therefore, from 
+              the harsh words of pleasures we accuse him of, nor of choosing, 
+              as they occur, the least of these kinds of annoyances and duties 
+              born.
+            </p>
+            <button type = "button" class = "btn">Know More</button>
+          </div>
+        </article>
+        <!------end of single service-------->
+         <!-----single service----->
+         <article class = "service">
+          <div class = "service-icon">
+            <span>
+              <i class = "fas fa-broom"></i>
+            </span>
+          </div>
+          <div class = "service-content">
+            <h2>House Keeping</h2>
+            <p>
+              The pain itself is important to the main adipisicing elite. 
+              It is the just man whom pardon never prevents, therefore, from 
+              the harsh words of pleasures we accuse him of, nor of choosing, 
+              as they occur, the least of these kinds of annoyances and duties 
+              born.
+            </p>
+            <button type = "button" class = "btn">Know More</button>
+          </div>
+        </article>
+        <!------end of single service-------->
+         <!-----single service----->
+         <article class = "service">
+          <div class = "service-icon">
+            <span>
+              <i class = "fas fa-door-closed"></i>
+            </span>
+          </div>
+          <div class = "service-content">
+            <h2>Room Security</h2>
+            <p>
+              The pain itself is important to the main adipisicing elite. 
+              It is the just man whom pardon never prevents, therefore, from 
+              the harsh words of pleasures we accuse him of, nor of choosing, 
+              as they occur, the least of these kinds of annoyances and duties 
+              born.
+            </p>
+            <button type = "button" class = "btn">Know More</button>
+          </div>
+        </article>
+        <!------end of single service-------->
+      </div>
+    </section>
+
+
+    <div class = "book">
+      <form class = "book-form">
+        <div class = "form-item">
+          <label for = "checkin-date">Check In Date: </label>
+          <input type = "date" id = "checkin-date">
+        </div>
+        <div class = "form-item">
+          <label for = "checkout-date">Check Out Date: </label>
+          <input type = "date" id = "checkout-date">
+        </div>
+        <div class = "form-item">
+          <label for = "adult">Adults: </label>
+          <input type = "number" min = "1" value = "1" id = "adult">
+        </div>
+        <div class = "form-item">
+          <label for = "children">Children: </label>
+          <input type = "number" min = "1" value = "1" id = "children">
+        </div>
+        <div class = "form-item">
+          <label for = "rooms">Rooms: </label>
+          <input type = "number" min = "1" value = "1" id = "rooms">
+        </div>
+        <div class = "form-item">
+          <input type = "submit" class = "btn" value = "Book Now">
+        </div>
+      </form>
+    </div>
+
+    <section class = "rooms sec-width" id = "rooms">
+      <div class = "title">
+        <h2>rooms</h2>
+      </div>
+      <div class = "rooms-container">
+        <!-----single room------>
+        <article class = "room">
+          <div class = "room-image">
+            <img src = "images/hedaru_room3.jpg" alt = "room image">
+          </div>
+          <div class = "room-text">
+            <h3>Luxury Rooms</h3>
+            <ul>
+              <li>
+                <i class = "fas fa-arrow-alt-circle-right"></i>
+                The pain itself is important to the main adipisicing elite.
+              </li>
+              <li>
+                <i class = "fas fa-arrow-alt-circle-right"></i>
+                The pain itself is important to the main adipisicing elite.
+              </li>
+              <li>
+                <i class = "fas fa-arrow-alt-circle-right"></i>
+                The pain itself is important to the main adipisicing elite.
+              </li>
+            </ul>
+            <p>
+              The pain itself is important to the main adipisicing elite. 
+              It is the just man whom pardon never prevents, therefore, from 
+              the harsh words of pleasures we accuse him of, nor of choosing, 
+              as they occur, the least of these kinds of annoyances and duties 
+              born.
+            </p>
+            <p>
+              The pain itself is important to the main adipisicing elite. 
+              It is the just man whom pardon never prevents, therefore, from 
+              the harsh words of pleasures we accuse him of, nor of choosing, 
+              as they occur, the least of these kinds of annoyances and duties 
+              born.
+            </p>
+            <p class = "rate">
+              <span>70,000.00TShs</span> Per Night
+            </p>
+            <button type = "button" class = "btn">book now</button>
+          </div>
+        </article>
+        <!-------end of single room------>
+
+        <!-----single room------>
+        <article class = "room">
+          <div class = "room-image">
+            <img src = "images/hedaru_room1.jpg" alt = "room image">
+          </div>
+          <div class = "room-text">
+            <h3>Luxury Rooms</h3>
+            <ul>
+              <li>
+                <i class = "fas fa-arrow-alt-circle-right"></i>
+                The pain itself is important to the main adipisicing elite.
+              </li>
+              <li>
+                <i class = "fas fa-arrow-alt-circle-right"></i>
+                The pain itself is important to the main adipisicing elite.
+              </li>
+              <li>
+                <i class = "fas fa-arrow-alt-circle-right"></i>
+                The pain itself is important to the main adipisicing elite.
+              </li>
+            </ul>
+            <p>
+              The pain itself is important to the main adipisicing elite. 
+              It is the just man whom pardon never prevents, therefore, from 
+              the harsh words of pleasures we accuse him of, nor of choosing, 
+              as they occur, the least of these kinds of annoyances and duties 
+              born.
+            </p>
+            <p>
+              The pain itself is important to the main adipisicing elite. 
+              It is the just man whom pardon never prevents, therefore, from 
+              the harsh words of pleasures we accuse him of, nor of choosing, 
+              as they occur, the least of these kinds of annoyances and duties 
+              born.
+            </p>
+            <p class = "rate">
+              <span>50,000.00TShs</span> Per Night
+            </p>
+            <button type = "button" class = "btn">book now</button>
+          </div>
+        </article>
+        <!-------end of single room------>
+
+        <!-----single room------>
+        <article class = "room">
+          <div class = "room-image">
+            <img src = "images/hedaru_room2.jpg" alt = "room image">
+          </div>
+          <div class = "room-text">
+            <h3>Luxury Rooms</h3>
+            <ul>
+              <li>
+                <i class = "fas fa-arrow-alt-circle-right"></i>
+                The pain itself is important to the main adipisicing elite.
+              </li>
+              <li>
+                <i class = "fas fa-arrow-alt-circle-right"></i>
+                The pain itself is important to the main adipisicing elite.
+              </li>
+              <li>
+                <i class = "fas fa-arrow-alt-circle-right"></i>
+                The pain itself is important to the main adipisicing elite.
+              </li>
+            </ul>
+            <p>
+              The pain itself is important to the main adipisicing elite. 
+              It is the just man whom pardon never prevents, therefore, from 
+              the harsh words of pleasures we accuse him of, nor of choosing, 
+              as they occur, the least of these kinds of annoyances and duties 
+              born.
+            </p>
+            <p>
+              The pain itself is important to the main adipisicing elite. 
+              It is the just man whom pardon never prevents, therefore, from 
+              the harsh words of pleasures we accuse him of, nor of choosing, 
+              as they occur, the least of these kinds of annoyances and duties 
+              born.
+            </p>
+            <p class = "rate">
+              <span>80,000.00TShs</span> Per Night
+            </p>
+            <button type = "button" class = "btn">book now</button>
+          </div>
+        </article>
+        <!-------end of single room------>
+      </div>
+    </section>
+
+    <!-----footer----->
+    <footer class = "footer">
+      <div class = "footer-container">
+        <div>
+          <h2>About Us </h2>
+          <p>              
+            Located in Hedaru, Hedaru Palace Hotel features a garden and a bar. 
+            Boasting a 24-hour front desk, this property also provides guests with 
+            a restaurant. The accommodation features an ATM, room service and buying 
+            tickets for guests. The units in the hotel are fitted with a flat-screen TV. 
+            Hedaru Palace Hotel offers certain rooms that feature mountain views, and all 
+            rooms are fitted with a private bathroom with a bath. Guest rooms at the 
+            accommodation have air conditioning and a desk. Hedaru Palace Hotel offers a 
+            continental or Full English/Irish breakfast. You can play darts at the hotel, 
+            and car hire is available.
+          </p>
+          <ul class = "social-icons">
+            <li class = "flex">
+              <i class = "fa fa-twitter fa-2x"></i>
+            </li>
+            <li class = "flex">
+              <i class = "fa fa-facebook fa-2x"></i>
+            </li>
+            <li class = "flex">
+              <i class = "fa fa-instagram fa-2x"></i>
+            </li>
+          </ul>          
+        </div>
+
+        <div>
+          <h2>Useful Links</h2>
+          <a href = "#">Blog</a>
+          <a href = "#">Rooms</a>
+          <a href = "#">Subscription</a>
+          <a href = "#">Gift Card</a>
+        </div>
+
+        <div>
+          <h2>Privacy</h2>
+          <a href = "#">Career</a>
+          <a href = "#">About Us</a>
+          <a href = "#">Contact Us</a>
+          <a href = "#">Services</a>
+        </div>
+
+        <div>
+          <h2>Have A Question</h2>
+          <div class = "contact-item">
+            <spam>
+              <i class = "fas fa-map-marker-alt"></i>
+            </spam>
+            <spam>
+              Hedaru Same District , Kilimanjaro Region , East Africa , Tanzania ., Hedaru, Tanzania
+            </spam>
+          </div>
+
+          <div class = "contact-item">
+            <spam>
+              <i class = "fas fa-map-phone-alt"></i>
+            </spam>
+            <spam>
+              +44 7405 839142
+            </spam>
+          </div>
+
+          <div class = "contact-item">
+            <spam>
+              <i class = "fas fa-map-envelope"></i>
+            </spam>
+            <spam>
+              kadivaimaniyahoo.com
+            </spam>
+          </div>
+        </div>
+
+
+      </div>
+    </footer>
+    <!------end of footer--->
+
+    <script src = "script.js"></script>
+
+  </body>
+</html>
