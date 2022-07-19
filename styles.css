@@ -76,7 +76,7 @@ img
 .header
 {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), 
-  url("images/front-building-image.jpg") center/cover no-repeat;
+  url("front-building-image.jpg") center/cover no-repeat;
   min-height: 100vh;
   color: #fff;
   padding: 25px;
@@ -302,7 +302,7 @@ img
 
 /* booking form */
 .book{
-  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url("images/executive_conference_room.jpg") center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url("executive_conference_room.jpg") center/cover no-repeat;
   color: #fff;
   padding: 40px 60px;
 }
