@@ -249,6 +249,16 @@ img
   margin: 15px 0;
 }
 
+.title2
+{
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size:30px;
+  color: var(--yellow);
+  margin: 15px 0;
+  border-bottom: 5px solid var(--dark);
+}
+
 .sec-width
 {
   width: 85vw;
@@ -455,7 +465,12 @@ img
 
 .meeting-rooms h2
 {
-  min-width: 900px;
+  /*min-width: 900px;*/
+}
+
+.sec-width-h2
+{
+  margin: 0 auto!important;
 }
 
 /* footer */
