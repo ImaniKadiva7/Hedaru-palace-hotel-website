@@ -463,9 +463,61 @@ img
   margin: 40px 0;
 }
 
-.sec-width-h2
+.meeting-room-container
 {
-  margin: 0 auto!important;
+}
+
+.meeting-room
+{
+  margin: 45px 0;
+  padding-bottom: 25px;
+  background: var(--dark);
+  color: #fff;
+}
+
+.meeting-room-image
+{
+}
+
+.meeting-room-image img
+{
+  height: 100%;
+}
+
+.meeting-room-text{
+  padding: 5px 20px;
+}
+.meeting-room h3{
+  font-size: 24px;
+}
+.meeting-room-text ul{
+  list-style-type: none;
+  margin: 15px 0;
+}
+.meeting-room-text ul li{
+  padding: 7px 0;
+}
+.meeting-room-text ul li i{
+  color: var(--yellow);
+  margin-right: 10px;
+}
+.rate{
+  opacity: 0.8;
+}
+.rate span{
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--yellow);
+}
+
+.meeting-room-image{
+  overflow: hidden;
+}
+.meeting-room-image img{
+  transition: var(--transition);
+}
+.meeting-room-image:hover img{
+  transform: scale(1.1);
 }
 
 /* footer */
