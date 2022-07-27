@@ -75,7 +75,7 @@ img
 /* header */
 .header
 {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), 
+  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
   url("front-building-image.jpg") center/cover no-repeat;
   min-height: 100vh;
   color: #fff;
@@ -125,6 +125,8 @@ img
   font-size: 20px;
   margin: 45px auto;
   width: 60vw;
+  color: 1px solid #fff;
+  font-weight: bold;
 }
 
 .head-btn
@@ -442,6 +444,18 @@ img
   .room:nth-child(even){
       flex-direction: row-reverse;
   }
+}
+
+/* meeting-rooms */
+
+.meeting-rooms
+{
+  margin: 40px 0;
+}
+
+.meeting-rooms h2
+{
+  min-width: 900px;
 }
 
 /* footer */
