@@ -410,7 +410,7 @@ img
   opacity: 0.8;
 }
 .rate span{
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 900;
   color: var(--yellow);
 }
@@ -501,22 +501,61 @@ img
   color: var(--yellow);
   margin-right: 10px;
 }
-.rate{
-  opacity: 0.8;
-}
-.rate span{
-  font-size: 40px;
-  font-weight: 900;
-  color: var(--yellow);
+
+
+/* Restaurants */
+
+.Restaurants
+{
+  margin: 40px 0;
 }
 
-.meeting-room-image{
+.Restaurants-container
+{
+}
+
+.Restaurant
+{
+  margin: 45px 0;
+  padding-bottom: 25px;
+  background: var(--dark);
+  color: #fff;
+}
+
+.Restaurant-image
+{
+}
+
+.Restaurant-image img
+{
+  height: 100%;
+}
+
+.Restaurant-text{
+  padding: 5px 20px;
+}
+.Retaurant h3{
+  font-size: 24px;
+}
+.Restaurant-text ul{
+  list-style-type: none;
+  margin: 15px 0;
+}
+.Restaurant-text ul li{
+  padding: 7px 0;
+}
+.Restaurant-text ul li i{
+  color: var(--yellow);
+  margin-right: 10px;
+}
+
+.Restaurant-image{
   overflow: hidden;
 }
-.meeting-room-image img{
+.Restaurant-image img{
   transition: var(--transition);
 }
-.meeting-room-image:hover img{
+.Restaurant-image:hover img{
   transform: scale(1.1);
 }
 
