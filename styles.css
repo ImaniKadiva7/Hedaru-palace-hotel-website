@@ -205,7 +205,7 @@ input[type="submit"] {
   color: var(--white);
   background:
     linear-gradient(115deg, rgba(17, 24, 39, 0.88), rgba(17, 24, 39, 0.48)),
-    url("front-building-image.jpg") center / cover no-repeat;
+    url("Hotel_Front_building_image.png") center / cover no-repeat;
 }
 
 .header::after {
