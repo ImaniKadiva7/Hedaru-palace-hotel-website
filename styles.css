@@ -4,6 +4,7 @@
    Premium round logo header
    Mobile-only fixed top navigation
    Mobile hero H2 centered
+   Booking submit button text centered for all devices
    ===================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
@@ -38,7 +39,6 @@
 
   --container: min(1180px, calc(100% - 32px));
 
-  /* Used only for mobile fixed navigation */
   --mobile-nav-top: 10px;
   --mobile-nav-height: 68px;
 }
@@ -150,6 +150,7 @@ input[type="submit"] {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  text-align: center;
   box-shadow: 0 12px 26px rgba(212, 175, 55, 0.32);
   transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
 }
@@ -193,7 +194,6 @@ input[type="submit"] {
 
 /* ==============================
    HEADER / HERO SECTION
-   Desktop, laptop and tablet use normal header flow
    ============================== */
 
 .header {
@@ -219,8 +219,6 @@ input[type="submit"] {
 
 /* ==============================
    TOP HEADER WITH PREMIUM ROUND LOGO
-   Normal position on desktop, laptop, computer, iPad and tablet
-   Fixed only on phones below
    ============================== */
 
 .head-top {
@@ -244,10 +242,6 @@ input[type="submit"] {
   transform: none;
 }
 
-/*
-  Logo badge.
-  Save the logo file as: Hedaru_palace_logo.png
-*/
 .head-top span:first-child {
   width: 68px;
   height: 68px;
@@ -288,7 +282,6 @@ input[type="submit"] {
     0 0 0 7px rgba(212, 175, 55, 0.22);
 }
 
-/* Semantic logo support */
 .head-top .brand,
 .head-top .logo-link {
   width: 68px;
@@ -330,7 +323,6 @@ input[type="submit"] {
 
 /* ==============================
    HAMBURGER MENU BUTTON
-   Perfectly centered 3 bars
    ============================== */
 
 #nav-btn,
@@ -502,7 +494,6 @@ input[type="submit"] {
   content: none;
 }
 
-/* Close X icon */
 .cancel-btn {
   position: absolute;
   top: 20px;
@@ -678,6 +669,7 @@ input[type="submit"] {
 
 /* ==============================
    BOOKING SECTION
+   Submit button text centered for all devices
    ============================== */
 
 .book {
@@ -744,8 +736,14 @@ input[type="submit"] {
 .book-form .btn {
   width: 100%;
   min-height: 52px;
+  height: 52px;
   margin: 0;
-  padding: 13px 18px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
   border-radius: 16px;
   background: linear-gradient(135deg, var(--primary-light), var(--primary));
   color: var(--dark);
@@ -753,6 +751,7 @@ input[type="submit"] {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 /* ==============================
@@ -1142,7 +1141,6 @@ input[type="submit"] {
 
 /* ==============================
    LARGE TABLETS / SMALL LAPTOPS
-   Not fixed on tablets or small laptops
    ============================== */
 
 @media (max-width: 1100px) {
@@ -1161,7 +1159,6 @@ input[type="submit"] {
 
 /* ==============================
    IPADS / TABLETS
-   Not fixed on tablets
    ============================== */
 
 @media (max-width: 850px) {
@@ -1236,8 +1233,6 @@ input[type="submit"] {
 
 /* ==============================
    ALL PHONES
-   Fixed navigation only starts here
-   H2 centered on mobile devices
    ============================== */
 
 @media (max-width: 600px) {
@@ -1349,10 +1344,6 @@ input[type="submit"] {
     font-size: 0.96rem;
   }
 
-  /*
-    Mobile hero text alignment fix.
-    This centers <h2>HEDARU PALACE HOTEL</h2> on all phones.
-  */
   .head-bottom {
     text-align: center;
     place-content: center;
@@ -1487,6 +1478,12 @@ input[type="submit"] {
     height: 56px;
     min-height: 56px;
     margin-top: 4px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
     border-radius: 16px;
     background: linear-gradient(135deg, var(--primary), var(--primary-light));
     color: #111827;
@@ -1494,6 +1491,7 @@ input[type="submit"] {
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    white-space: nowrap;
   }
 
   .room-image img,
@@ -1544,6 +1542,17 @@ input[type="submit"] {
     border-radius: 18px;
     font-size: 16px;
     line-height: 56px;
+  }
+
+  .book-form input[type="submit"],
+  .book-form .btn {
+    height: 56px;
+    min-height: 56px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   .book-form input[type="date"]::-webkit-date-and-time-value {
@@ -1634,6 +1643,15 @@ input[type="submit"] {
     font-size: 0.86rem;
     padding-left: 18px;
     padding-right: 18px;
+  }
+
+  .book-form input[type="submit"],
+  .book-form .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
   }
 
   .room-text,
