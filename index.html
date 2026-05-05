@@ -5,14 +5,13 @@
     <title>Hedaru Palace Hotel Official Website</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous" defer></script>
 
     <link rel="icon" href="images/logo.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
   </head>
 
   <body>
-    <!----header----->
     <header class="header" id="header">
       <div class="head-top">
         <a class="brand" href="index.html" aria-label="Hedaru Palace Hotel home">
@@ -25,9 +24,12 @@
           >
         </a>
 
-        <div class="site-nav">
-          <span id="nav-btn">MENU <i class="fas fa-bars"></i></span>
-        </div>
+        <nav class="site-nav" aria-label="Main navigation">
+          <button type="button" id="nav-btn" class="menu-btn" aria-label="Open navigation menu">
+            Menu
+            <i class="fas fa-bars" aria-hidden="true"></i>
+          </button>
+        </nav>
       </div>
 
       <div class="head-bottom flex">
@@ -35,7 +37,7 @@
         <p>
           Welcome to Hedaru Palace Hotel, where comfort, convenience, and warm hospitality make every stay memorable.
           Enjoy self-contained rooms, free Wi-Fi, a restaurant, bar, room service, meeting spaces, catering,
-          ATM access, and 24-hour reception. Whether you are visiting for business, or leisure,
+          ATM access, and 24-hour reception. Whether you are visiting for business or leisure,
           we are here to help you relax, dine, connect, and enjoy a stay worth remembering.
         </p>
         <button type="button" class="head-btn">
@@ -43,460 +45,466 @@
         </button>
       </div>
     </header>
-    <!-----END OF HEADER --->
 
-    <!-----side-nav------>
-    <div class="sidenav" id="sidenav">
-      <span class="cancel-btn" id="cancel-btn">
-        <i class="fas fa-times"></i>
-      </span>
+    <nav class="sidenav" id="sidenav" aria-label="Side navigation">
+      <button type="button" class="cancel-btn" id="cancel-btn" aria-label="Close navigation menu">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
 
       <ul class="navbar">
         <li><a href="#header">home</a></li>
         <li><a href="#services">services</a></li>
         <li><a href="#rooms">rooms</a></li>
       </ul>
-    </div>
-    <!--------end of side navbar---------->
+    </nav>
 
-    <!-----full screen model------>
-    <div id="modal"></div>
-    <!-----end of full screen model----->
+    <div id="modal" aria-hidden="true"></div>
 
-    <!-----body content------>
-    <section class="services sec-width" id="services">
-      <div class="title">
-        <h2>services</h2>
-      </div>
-
-      <div class="services-container">
-        <article class="service">
-          <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="34" height="34" role="img" focusable="false">
-              <path
-                fill="currentColor"
-                d="M7 2a1 1 0 0 1 1 1v7a3 3 0 0 1-2 2.83V21a1 1 0 1 1-2 0v-8.17A3 3 0 0 1 2 10V3a1 1 0 0 1 2 0v7a1 1 0 0 0 1 1V3a1 1 0 0 1 2 0v8a1 1 0 0 0 1-1V3a1 1 0 0 1 1-1Zm10 0c2.76 0 5 3.13 5 7 0 2.74-1.12 5.1-2.75 6.25V21a1 1 0 1 1-2 0v-5h-.25c-2.76 0-5-3.13-5-7s2.24-7 5-7Zm0 2c-1.66 0-3 2.24-3 5s1.34 5 3 5 3-2.24 3-5-1.34-5-3-5Z"
-              />
-            </svg>
-          </div>
-
-          <div class="service-content">
-            <h2>Food Service / Restaurant</h2>
-            <p>
-              Enjoy freshly prepared meals in our welcoming restaurant, with convenient food service
-              available for guests who want comfort, quality, and flavour during their stay.
-            </p>
-            <button type="button" class="btn">Know More</button>
-          </div>
-        </article>
-
-        <article class="service">
-          <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="34" height="34" role="img" focusable="false">
-              <path
-                fill="currentColor"
-                d="M12 18.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm0-4.5a5.5 5.5 0 0 1 3.89 1.61 1 1 0 1 1-1.42 1.41A3.48 3.48 0 0 0 12 16a3.48 3.48 0 0 0-2.47 1.02 1 1 0 0 1-1.42-1.41A5.5 5.5 0 0 1 12 14Zm0-5a10.45 10.45 0 0 1 7.42 3.08 1 1 0 1 1-1.42 1.41A8.48 8.48 0 0 0 12 11a8.48 8.48 0 0 0-6 2.49 1 1 0 1 1-1.42-1.41A10.45 10.45 0 0 1 12 9Zm0-5a15.42 15.42 0 0 1 10.61 4.2 1 1 0 1 1-1.37 1.46A13.43 13.43 0 0 0 12 6a13.43 13.43 0 0 0-9.24 3.66A1 1 0 0 1 1.39 8.2 15.42 15.42 0 0 1 12 4Z"
-              />
-            </svg>
-          </div>
-
-          <div class="service-content">
-            <h2>Free Wi-Fi</h2>
-            <p>
-              Stay connected throughout your visit with reliable complimentary Wi-Fi, ideal for work,
-              communication, travel planning, and entertainment.
-            </p>
-            <button type="button" class="btn">Know More</button>
-          </div>
-        </article>
-
-        <article class="service">
-          <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="34" height="34" role="img" focusable="false">
-              <path
-                fill="currentColor"
-                d="M15 2a1 1 0 0 1 1 1v4h2a2 2 0 0 1 2 2v2a5 5 0 0 1-2 4v6a1 1 0 0 1-2 0v-5.1a5.02 5.02 0 0 1-2 .1v5a1 1 0 1 1-2 0v-5.68A5 5 0 0 1 10 11V9a2 2 0 0 1 2-2h2V3a1 1 0 0 1 1-1ZM4 12a1 1 0 0 1 1 1v3h3a1 1 0 1 1 0 2H5v3a1 1 0 1 1-2 0v-3H1a1 1 0 1 1 0-2h2v-3a1 1 0 0 1 1-1Zm8-3v2a3 3 0 1 0 6 0V9h-6Z"
-              />
-            </svg>
-          </div>
-
-          <div class="service-content">
-            <h2>Housekeeping</h2>
-            <p>
-              Our housekeeping team keeps your room clean, comfortable, and refreshed, helping you enjoy
-              a peaceful and worry-free stay.
-            </p>
-            <button type="button" class="btn">Know More</button>
-          </div>
-        </article>
-
-        <article class="service">
-          <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="34" height="34" role="img" focusable="false">
-              <path
-                fill="currentColor"
-                d="M4 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8h1a1 1 0 0 1 1 1v8a1 1 0 1 1-2 0v-2H4v2a1 1 0 1 1-2 0v-8a1 1 0 0 1 1-1h1V4Zm2 0v8h5V8a2 2 0 0 0-2-2H6Zm7 8h5V4h-5v8ZM4 14v3h16v-3H4Z"
-              />
-            </svg>
-          </div>
-
-          <div class="service-content">
-            <h2>Room Service</h2>
-            <p>
-              Relax in your room and enjoy convenient room service designed to make your stay more
-              comfortable, private, and enjoyable.
-            </p>
-            <button type="button" class="btn">Know More</button>
-          </div>
-        </article>
-
-        <article class="service">
-          <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="34" height="34" role="img" focusable="false">
-              <path
-                fill="currentColor"
-                d="M12 2a5 5 0 0 1 5 5v1h1a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h1V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v1h6V7a3 3 0 0 0-3-3ZM6 10a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1H6Zm6 2a1 1 0 0 1 1 1v1h1a1 1 0 1 1 0 2h-1v1a1 1 0 1 1-2 0v-1h-1a1 1 0 1 1 0-2h1v-1a1 1 0 0 1 1-1Z"
-              />
-            </svg>
-          </div>
-
-          <div class="service-content">
-            <h2>Catering Services</h2>
-            <p>
-              From meetings to special occasions, our catering service helps you host guests with
-              delicious food and professional hospitality.
-            </p>
-            <button type="button" class="btn">Know More</button>
-          </div>
-        </article>
-
-        <article class="service">
-          <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="34" height="34" role="img" focusable="false">
-              <path
-                fill="currentColor"
-                d="M4 3h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-7v2h3a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2h3v-2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm0 2v10h16V5H4Zm4 3h8a1 1 0 1 1 0 2H8a1 1 0 0 1 0-2Zm0 3h5a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2Z"
-              />
-            </svg>
-          </div>
-
-          <div class="service-content">
-            <h2>Meeting Rooms</h2>
-            <p>
-              Host business meetings, training sessions, and private events in our comfortable meeting
-              spaces with helpful hotel support.
-            </p>
-            <button type="button" class="btn">Know More</button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <div class="book">
-      <form class="book-form">
-        <div class="form-item">
-          <label for="checkin-date">Check In Date: </label>
-          <input type="date" id="checkin-date">
+    <main>
+      <section class="services sec-width" id="services">
+        <div class="title">
+          <h2>services</h2>
         </div>
 
-        <div class="form-item">
-          <label for="checkout-date">Check Out Date: </label>
-          <input type="date" id="checkout-date">
+        <div class="services-container">
+          <article class="service">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="34" height="34" role="img" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M7 2a1 1 0 0 1 1 1v7a3 3 0 0 1-2 2.83V21a1 1 0 1 1-2 0v-8.17A3 3 0 0 1 2 10V3a1 1 0 0 1 2 0v7a1 1 0 0 0 1 1V3a1 1 0 0 1 2 0v8a1 1 0 0 0 1-1V3a1 1 0 0 1 1-1Zm10 0c2.76 0 5 3.13 5 7 0 2.74-1.12 5.1-2.75 6.25V21a1 1 0 1 1-2 0v-5h-.25c-2.76 0-5-3.13-5-7s2.24-7 5-7Zm0 2c-1.66 0-3 2.24-3 5s1.34 5 3 5 3-2.24 3-5-1.34-5-3-5Z"
+                />
+              </svg>
+            </div>
+
+            <div class="service-content">
+              <h2>Food Service / Restaurant</h2>
+              <p>
+                Enjoy freshly prepared meals in our welcoming restaurant, with convenient food service
+                available for guests who want comfort, quality, and flavour during their stay.
+              </p>
+              <button type="button" class="btn">Know More</button>
+            </div>
+          </article>
+
+          <article class="service">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="34" height="34" role="img" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M12 18.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm0-4.5a5.5 5.5 0 0 1 3.89 1.61 1 1 0 1 1-1.42 1.41A3.48 3.48 0 0 0 12 16a3.48 3.48 0 0 0-2.47 1.02 1 1 0 0 1-1.42-1.41A5.5 5.5 0 0 1 12 14Zm0-5a10.45 10.45 0 0 1 7.42 3.08 1 1 0 1 1-1.42 1.41A8.48 8.48 0 0 0 12 11a8.48 8.48 0 0 0-6 2.49 1 1 0 1 1-1.42-1.41A10.45 10.45 0 0 1 12 9Zm0-5a15.42 15.42 0 0 1 10.61 4.2 1 1 0 1 1-1.37 1.46A13.43 13.43 0 0 0 12 6a13.43 13.43 0 0 0-9.24 3.66A1 1 0 0 1 1.39 8.2 15.42 15.42 0 0 1 12 4Z"
+                />
+              </svg>
+            </div>
+
+            <div class="service-content">
+              <h2>Free Wi-Fi</h2>
+              <p>
+                Stay connected throughout your visit with reliable complimentary Wi-Fi, ideal for work,
+                communication, travel planning, and entertainment.
+              </p>
+              <button type="button" class="btn">Know More</button>
+            </div>
+          </article>
+
+          <article class="service">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="34" height="34" role="img" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M15 2a1 1 0 0 1 1 1v4h2a2 2 0 0 1 2 2v2a5 5 0 0 1-2 4v6a1 1 0 0 1-2 0v-5.1a5.02 5.02 0 0 1-2 .1v5a1 1 0 1 1-2 0v-5.68A5 5 0 0 1 10 11V9a2 2 0 0 1 2-2h2V3a1 1 0 0 1 1-1ZM4 12a1 1 0 0 1 1 1v3h3a1 1 0 1 1 0 2H5v3a1 1 0 1 1-2 0v-3H1a1 1 0 1 1 0-2h2v-3a1 1 0 0 1 1-1Zm8-3v2a3 3 0 1 0 6 0V9h-6Z"
+                />
+              </svg>
+            </div>
+
+            <div class="service-content">
+              <h2>Housekeeping</h2>
+              <p>
+                Our housekeeping team keeps your room clean, comfortable, and refreshed, helping you enjoy
+                a peaceful and worry-free stay.
+              </p>
+              <button type="button" class="btn">Know More</button>
+            </div>
+          </article>
+
+          <article class="service">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="34" height="34" role="img" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M4 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8h1a1 1 0 0 1 1 1v8a1 1 0 1 1-2 0v-2H4v2a1 1 0 1 1-2 0v-8a1 1 0 0 1 1-1h1V4Zm2 0v8h5V8a2 2 0 0 0-2-2H6Zm7 8h5V4h-5v8ZM4 14v3h16v-3H4Z"
+                />
+              </svg>
+            </div>
+
+            <div class="service-content">
+              <h2>Room Service</h2>
+              <p>
+                Relax in your room and enjoy convenient room service designed to make your stay more
+                comfortable, private, and enjoyable.
+              </p>
+              <button type="button" class="btn">Know More</button>
+            </div>
+          </article>
+
+          <article class="service">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="34" height="34" role="img" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M12 2a5 5 0 0 1 5 5v1h1a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h1V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v1h6V7a3 3 0 0 0-3-3ZM6 10a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1H6Zm6 2a1 1 0 0 1 1 1v1h1a1 1 0 1 1 0 2h-1v1a1 1 0 1 1-2 0v-1h-1a1 1 0 1 1 0-2h1v-1a1 1 0 0 1 1-1Z"
+                />
+              </svg>
+            </div>
+
+            <div class="service-content">
+              <h2>Catering Services</h2>
+              <p>
+                From meetings to special occasions, our catering service helps you host guests with
+                delicious food and professional hospitality.
+              </p>
+              <button type="button" class="btn">Know More</button>
+            </div>
+          </article>
+
+          <article class="service">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="34" height="34" role="img" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M4 3h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-7v2h3a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2h3v-2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm0 2v10h16V5H4Zm4 3h8a1 1 0 1 1 0 2H8a1 1 0 0 1 0-2Zm0 3h5a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2Z"
+                />
+              </svg>
+            </div>
+
+            <div class="service-content">
+              <h2>Meeting Rooms</h2>
+              <p>
+                Host business meetings, training sessions, and private events in our comfortable meeting
+                spaces with helpful hotel support.
+              </p>
+              <button type="button" class="btn">Know More</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="book" aria-label="Booking form">
+        <form class="book-form" action="#" method="get">
+          <div class="form-item">
+            <label for="checkin-date">Check In Date:</label>
+            <input type="date" id="checkin-date" name="checkin-date">
+          </div>
+
+          <div class="form-item">
+            <label for="checkout-date">Check Out Date:</label>
+            <input type="date" id="checkout-date" name="checkout-date">
+          </div>
+
+          <div class="form-item">
+            <label for="adult">Adults:</label>
+            <input type="number" min="1" value="1" id="adult" name="adults">
+          </div>
+
+          <div class="form-item">
+            <label for="children">Children:</label>
+            <input type="number" min="0" value="0" id="children" name="children">
+          </div>
+
+          <div class="form-item">
+            <label for="rooms-count">Rooms:</label>
+            <input type="number" min="1" value="1" id="rooms-count" name="rooms">
+          </div>
+
+          <div class="form-item">
+            <input type="button" class="btn" value="Book Now">
+          </div>
+        </form>
+      </section>
+
+      <section class="rooms sec-width" id="rooms">
+        <div class="title">
+          <h2>Rooms</h2>
         </div>
 
-        <div class="form-item">
-          <label for="adult">Adults: </label>
-          <input type="number" min="1" value="1" id="adult">
+        <div class="rooms-container">
+          <article class="room">
+            <div class="room-image">
+              <img
+                src="Executive_High_Luxury_room_2.png"
+                alt="Executive High Luxury Room at Hedaru Palace Hotel"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="room-text">
+              <h3>Executive High Luxury Room</h3>
+
+              <ul>
+                <li>Spacious premium room ideal for guests who want extra comfort and privacy.</li>
+                <li>Air conditioning, private bathroom, work desk, flat-screen TV and free Wi-Fi.</li>
+                <li>Best choice for business travellers, VIP guests and longer relaxing stays.</li>
+              </ul>
+
+              <p>
+                The Executive High Luxury Room is designed for guests who want the most comfortable stay
+                at Hedaru Palace Hotel. It offers a peaceful setting with generous space to relax, work,
+                freshen up and enjoy private downtime after a long journey or busy day in Hedaru.
+              </p>
+
+              <p>
+                This room is a strong choice for business guests, couples and travellers who prefer a
+                more refined room experience with convenient hotel services such as room service,
+                housekeeping, free Wi-Fi and 24-hour front desk support.
+              </p>
+
+              <p class="rate">
+                <span>100,000.00TShs</span> Per Night
+              </p>
+
+              <button type="button" class="btn">book now</button>
+            </div>
+          </article>
+
+          <article class="room">
+            <div class="room-image">
+              <img
+                src="Executive Medium Rooms.png"
+                alt="Executive Medium Room at Hedaru Palace Hotel"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="room-text">
+              <h3>Executive Medium Room</h3>
+
+              <ul>
+                <li>Comfortable room with a balanced mix of space, value and convenience.</li>
+                <li>Includes free Wi-Fi, air conditioning, private bathroom and work-friendly desk area.</li>
+                <li>Suitable for solo guests, couples and short business visits.</li>
+              </ul>
+
+              <p>
+                The Executive Medium Room is perfect for guests looking for a stylish and practical stay
+                without compromising comfort. It gives you the essential features needed for a smooth hotel
+                experience, including a relaxing sleeping area, private bathroom and space to work or plan your day.
+              </p>
+
+              <p>
+                This room is especially suitable for travellers passing through Hedaru, business visitors
+                attending meetings, or guests who want dependable comfort close to the hotel restaurant,
+                bar and guest services.
+              </p>
+
+              <p class="rate">
+                <span>80,000.00TShs</span> Per Night
+              </p>
+
+              <button type="button" class="btn">book now</button>
+            </div>
+          </article>
+
+          <article class="room">
+            <div class="room-image">
+              <img
+                src="Executive_standard_room_01.png"
+                alt="Executive Standard Double Room at Hedaru Palace Hotel"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="room-text">
+              <h3>Executive Standard Room (Double Bed)</h3>
+
+              <ul>
+                <li>Double-bed room suitable for couples, friends or guests who prefer more sleeping space.</li>
+                <li>Private bathroom, free Wi-Fi, flat-screen TV and practical in-room comfort.</li>
+                <li>A good value option for leisure stays and overnight stops in Hedaru.</li>
+              </ul>
+
+              <p>
+                The Executive Standard Double Room gives guests a comfortable and affordable stay with the
+                convenience of a double bed and essential hotel amenities. It is a welcoming option for two
+                guests or for one guest who prefers a larger sleeping arrangement.
+              </p>
+
+              <p>
+                With access to the hotel’s restaurant, bar, breakfast options, free parking and 24-hour
+                reception support, this room is a practical choice for tourists, local visitors and business
+                travellers who want comfort at a fair rate.
+              </p>
+
+              <p class="rate">
+                <span>70,000.00TShs</span> Per Night
+              </p>
+
+              <button type="button" class="btn">book now</button>
+            </div>
+          </article>
+
+          <article class="room">
+            <div class="room-image">
+              <img
+                src="Executive_standard_room_02.png"
+                alt="Executive Standard Single Room at Hedaru Palace Hotel"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="room-text">
+              <h3>Executive Standard Room (Single Bed)</h3>
+
+              <ul>
+                <li>Simple, clean and comfortable single-bed room for one guest.</li>
+                <li>Ideal for solo travellers, work trips and short overnight stays.</li>
+                <li>Includes free Wi-Fi access, private bathroom and reliable hotel support.</li>
+              </ul>
+
+              <p>
+                The Executive Standard Single Room is designed for guests who want a calm, private and
+                budget-friendly room while still enjoying the convenience of Hedaru Palace Hotel. It is a
+                smart option for solo travellers, drivers, business visitors and guests staying for a short trip.
+              </p>
+
+              <p>
+                Guests can enjoy access to hotel facilities such as the restaurant, bar, room service,
+                housekeeping and 24-hour reception, making this room a dependable choice for a comfortable
+                and convenient stay in Hedaru.
+              </p>
+
+              <p class="rate">
+                <span>60,000.00TShs</span> Per Night
+              </p>
+
+              <button type="button" class="btn">book now</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="meeting-rooms sec-width" id="meeting-rooms">
+        <div class="title2">
+          <h2>Conference Room</h2>
         </div>
 
-        <div class="form-item">
-          <label for="children">Children: </label>
-          <input type="number" min="1" value="1" id="children">
+        <div class="meeting-room-container">
+          <article class="meeting-room">
+            <div class="meeting-room-image">
+              <img src="executive_conference_room.jpg" alt="Executive conference room" loading="lazy">
+            </div>
+
+            <div class="meeting-room-text">
+              <h3>Executive Conference Room</h3>
+              <ul>
+                <li>Comfortable meeting space for business sessions and private events.</li>
+                <li>Suitable for training, presentations, group discussions and formal gatherings.</li>
+                <li>Catering and restaurant support available on request.</li>
+              </ul>
+              <p>
+                Host productive meetings and special gatherings in a comfortable conference setting supported
+                by Hedaru Palace Hotel hospitality. The space is suitable for business meetings, workshops,
+                training sessions and private events.
+              </p>
+              <p>
+                Guests can combine meeting-room use with catering, restaurant service, bar service and hotel
+                accommodation for a convenient full-service event experience.
+              </p>
+              <p class="rate">
+                <span>150,000.00TShs</span> Per 8 hours
+              </p>
+              <button type="button" class="btn">book now</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="Restaurants sec-width" id="Restaurants">
+        <div class="title2">
+          <h2>Restaurant</h2>
         </div>
 
-        <div class="form-item">
-          <label for="rooms">Rooms: </label>
-          <input type="number" min="1" value="1" id="rooms">
+        <div class="Restaurants-container">
+          <article class="Restaurant">
+            <div class="Restaurant-image">
+              <img
+                src="Restaurant_Hedaru_Palace_Hotel.jpeg"
+                alt="Hedaru Palace Hotel restaurant"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="Restaurant-text">
+              <h3>Restaurant</h3>
+              <ul>
+                <li>Fresh meals served in a welcoming hotel restaurant environment.</li>
+                <li>Breakfast, lunch, dinner and guest dining support available.</li>
+                <li>Suitable for hotel guests, business visitors and private dining needs.</li>
+              </ul>
+              <p>
+                Enjoy a relaxed dining experience at Hedaru Palace Hotel restaurant, where guests can
+                enjoy convenient meals without leaving the hotel. The restaurant is suitable for travellers,
+                business guests and visitors looking for a comfortable place to dine.
+              </p>
+              <p>
+                The hotel also supports catering for meetings and special occasions, making it easy to combine
+                accommodation, dining and event services in one place.
+              </p>
+              <p class="rate">
+                <span>Fresh meals available</span>
+              </p>
+              <button type="button" class="btn">book now</button>
+            </div>
+          </article>
         </div>
+      </section>
+    </main>
 
-        <div class="form-item">
-          <input type="button" class="btn" value="Book Now">
-        </div>
-      </form>
-    </div>
-
-    <section class="rooms sec-width" id="rooms">
-      <div class="title">
-        <h2>Rooms</h2>
-      </div>
-
-      <div class="rooms-container">
-        <article class="room">
-          <div class="room-image">
-            <img src="Executive_High_Luxury_room_2.png" alt="Executive high luxury hotel room">
-          </div>
-
-          <div class="room-text">
-            <h3>Executive High Luxury Rooms</h3>
-            <ul>
-              <li>This room comes with a king sized bed.</li>
-              <li>There is a free WIFI service available for this room.</li>
-              <li>24 hour room security service available.</li>
-            </ul>
-            <p>
-              The pain itself is important to the main adipisicing elite.
-              It is the just man whom pardon never prevents, therefore, from
-              the harsh words of pleasures we accuse him of, nor of choosing,
-              as they occur, the least of these kinds of annoyances and duties
-              born.
-            </p>
-            <p>
-              The pain itself is important to the main adipisicing elite.
-              It is the just man whom pardon never prevents, therefore, from
-              the harsh words of pleasures we accuse him of, nor of choosing,
-              as they occur, the least of these kinds of annoyances and duties
-              born.
-            </p>
-            <p class="rate">
-              <span>100,000.00TShs</span> Per Night
-            </p>
-            <button type="button" class="btn">book now</button>
-          </div>
-        </article>
-
-        <article class="room">
-          <div class="room-image">
-            <img src="Executive Medium Rooms.png" alt="Executive medium hotel room">
-          </div>
-
-          <div class="room-text">
-            <h3>Executive Medium Rooms</h3>
-            <ul>
-              <li>This room comes with a king sized bed.</li>
-              <li>There is a free WIFI service available for this room.</li>
-              <li>24 hour room security service available.</li>
-            </ul>
-            <p>
-              The pain itself is important to the main adipisicing elite.
-              It is the just man whom pardon never prevents, therefore, from
-              the harsh words of pleasures we accuse him of, nor of choosing,
-              as they occur, the least of these kinds of annoyances and duties
-              born.
-            </p>
-            <p>
-              The pain itself is important to the main adipisicing elite.
-              It is the just man whom pardon never prevents, therefore, from
-              the harsh words of pleasures we accuse him of, nor of choosing,
-              as they occur, the least of these kinds of annoyances and duties
-              born.
-            </p>
-            <p class="rate">
-              <span>80,000.00TShs</span> Per Night
-            </p>
-            <button type="button" class="btn">book now</button>
-          </div>
-        </article>
-
-        <article class="room">
-          <div class="room-image">
-            <img src="Executive_standard_room_01.png" alt="Executive standard double bed hotel room">
-          </div>
-
-          <div class="room-text">
-            <h3>Executive Standard Room (Double bed)</h3>
-            <ul>
-              <li>This room comes with a king sized bed.</li>
-              <li>There is a free WIFI service available for this room.</li>
-              <li>24 hour room security service available.</li>
-            </ul>
-            <p>
-              The pain itself is important to the main adipisicing elite.
-              It is the just man whom pardon never prevents, therefore, from
-              the harsh words of pleasures we accuse him of, nor of choosing,
-              as they occur, the least of these kinds of annoyances and duties
-              born.
-            </p>
-            <p>
-              The pain itself is important to the main adipisicing elite.
-              It is the just man whom pardon never prevents, therefore, from
-              the harsh words of pleasures we accuse him of, nor of choosing,
-              as they occur, the least of these kinds of annoyances and duties
-              born.
-            </p>
-            <p class="rate">
-              <span>70,000.00TShs</span> Per Night
-            </p>
-            <button type="button" class="btn">book now</button>
-          </div>
-        </article>
-
-        <article class="room">
-          <div class="room-image">
-            <img src="Executive_standard_room_02.png" alt="Executive standard single bed hotel room">
-          </div>
-
-          <div class="room-text">
-            <h3>Executive Standard Room (Single bed)</h3>
-            <ul>
-              <li>This room comes with a king sized bed.</li>
-              <li>There is a free WIFI service available for this room.</li>
-              <li>24 hour room security service available.</li>
-            </ul>
-            <p>
-              The pain itself is important to the main adipisicing elite.
-              It is the just man whom pardon never prevents, therefore, from
-              the harsh words of pleasures we accuse him of, nor of choosing,
-              as they occur, the least of these kinds of annoyances and duties
-              born.
-            </p>
-            <p>
-              The pain itself is important to the main adipisicing elite.
-              It is the just man whom pardon never prevents, therefore, from
-              the harsh words of pleasures we accuse him of, nor of choosing,
-              as they occur, the least of these kinds of annoyances and duties
-              born.
-            </p>
-            <p class="rate">
-              <span>60,000.00TShs</span> Per Night
-            </p>
-            <button type="button" class="btn">book now</button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="meeting-rooms sec-width" id="meeting-rooms">
-      <div class="title2">
-        <h2>Conference Room</h2>
-      </div>
-
-      <div class="meeting-room-container">
-        <article class="meeting-room">
-          <div class="meeting-room-image">
-            <img src="executive_conference_room.jpg" alt="Executive conference room">
-          </div>
-
-          <div class="meeting-room-text">
-            <h3>Executive Conference Room</h3>
-            <ul>
-              <li>This room comes with a king sized bed.</li>
-              <li>There is a free WIFI service available for this room.</li>
-              <li>24 hour room security service available.</li>
-            </ul>
-            <p>
-              The pain itself is important to the main adipisicing elite.
-              It is the just man whom pardon never prevents, therefore, from
-              the harsh words of pleasures we accuse him of, nor of choosing,
-              as they occur, the least of these kinds of annoyances and duties
-              born.
-            </p>
-            <p>
-              The pain itself is important to the main adipisicing elite.
-              It is the just man whom pardon never prevents, therefore, from
-              the harsh words of pleasures we accuse him of, nor of choosing,
-              as they occur, the least of these kinds of annoyances and duties
-              born.
-            </p>
-            <p class="rate">
-              <span>150,000.00TShs</span> Per 8 hours
-            </p>
-            <button type="button" class="btn">book now</button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="Restaurants sec-width" id="Restaurants">
-      <div class="title2">
-        <h2>Restaurant</h2>
-      </div>
-
-      <div class="Restaurants-container">
-        <article class="Restaurant">
-          <div class="Restaurant-image">
-            <img src="Restaurant_Hedaru_Palace_Hotel.jpeg" alt="Hedaru Palace Hotel restaurant">
-          </div>
-
-          <div class="Restaurant-text">
-            <h3>Restaurant</h3>
-            <ul>
-              <li>This room comes with a king sized bed.</li>
-              <li>There is a free WIFI service available for this room.</li>
-              <li>24 hour room security service available.</li>
-            </ul>
-            <p>
-              The pain itself is important to the main adipisicing elite.
-              It is the just man whom pardon never prevents, therefore, from
-              the harsh words of pleasures we accuse him of, nor of choosing,
-              as they occur, the least of these kinds of annoyances and duties
-              born.
-            </p>
-            <p>
-              The pain itself is important to the main adipisicing elite.
-              It is the just man whom pardon never prevents, therefore, from
-              the harsh words of pleasures we accuse him of, nor of choosing,
-              as they occur, the least of these kinds of annoyances and duties
-              born.
-            </p>
-            <p class="rate">
-              <span>150,000.00TShs</span> Per 8 hours
-            </p>
-            <button type="button" class="btn">book now</button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-----footer----->
     <footer class="footer">
       <div class="footer-container">
-        <div>
-          <h2>About Us</h2>
+        <section aria-labelledby="footer-about-title">
+          <h2 id="footer-about-title">About Us</h2>
           <p>
-            Located in Hedaru, Hedaru Palace Hotel features a garden and a bar.
-            Boasting a 24-hour front desk, this property also provides guests with
-            a restaurant. The accommodation features an ATM, room service and buying
-            tickets for guests. The units in the hotel are fitted with a flat-screen TV.
-            Hedaru Palace Hotel offers certain rooms that feature mountain views, and all
-            rooms are fitted with a private bathroom with a bath. Guest rooms at the
-            accommodation have air conditioning and a desk. Hedaru Palace Hotel offers a
-            continental or Full English/Irish breakfast. You can play darts at the hotel,
-            and car hire is available.
+            Located in Hedaru, Hedaru Palace Hotel offers comfortable accommodation with a restaurant,
+            bar, free Wi-Fi, room service, 24-hour front desk support and convenient guest facilities.
+            Whether you are visiting for business, leisure or a special occasion, our team is ready to
+            help you enjoy a relaxing stay.
           </p>
 
-          <ul class="social-icons">
+          <ul class="social-icons" aria-label="Social media links">
             <li class="flex">
-              <i class="fa fa-twitter fa-2x"></i>
+              <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
             </li>
             <li class="flex">
-              <i class="fa fa-facebook fa-2x"></i>
+              <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
             </li>
             <li class="flex">
-              <i class="fa fa-instagram fa-2x"></i>
+              <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
             </li>
           </ul>
-        </div>
+        </section>
 
-        <div>
-          <h2>Useful Links</h2>
-          <a href="#">Blog</a>
-          <a href="#">Rooms</a>
-        </div>
+        <nav aria-labelledby="footer-links-title">
+          <h2 id="footer-links-title">Useful Links</h2>
+          <a href="#rooms">Rooms</a>
+          <a href="#services">Services</a>
+          <a href="#Restaurants">Restaurant</a>
+          <a href="#meeting-rooms">Conference Room</a>
+        </nav>
 
-        <div>
-          <h2>Privacy</h2>
-          <a href="#">Career</a>
-          <a href="#">About Us</a>
-          <a href="#">Contact Us</a>
-          <a href="#">Services</a>
-        </div>
+        <nav aria-labelledby="footer-privacy-title">
+          <h2 id="footer-privacy-title">Privacy</h2>
+          <a href="#header">Home</a>
+          <a href="#services">Services</a>
+          <a href="#rooms">Rooms</a>
+          <a href="#Restaurants">Contact Us</a>
+        </nav>
 
-        <div>
-          <h2>Have A Question</h2>
+        <section aria-labelledby="footer-question-title">
+          <h2 id="footer-question-title">Have A Question</h2>
 
           <div class="contact-item">
             <span>
-              <i class="fas fa-map-marker-alt"></i>
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
             </span>
             <span>
               Hedaru Same District, Kilimanjaro Region, East Africa, Tanzania., Hedaru, Tanzania
@@ -505,7 +513,7 @@
 
           <div class="contact-item">
             <span>
-              <i class="fas fa-phone-alt"></i>
+              <i class="fas fa-phone-alt" aria-hidden="true"></i>
             </span>
             <span>
               +255 625 888777
@@ -514,17 +522,16 @@
 
           <div class="contact-item">
             <span>
-              <i class="fas fa-envelope"></i>
+              <i class="fas fa-envelope" aria-hidden="true"></i>
             </span>
             <span>
               hedarupalace@gmail.com
             </span>
           </div>
-        </div>
+        </section>
       </div>
     </footer>
-    <!------end of footer--->
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>
