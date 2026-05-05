@@ -2,6 +2,7 @@
    HEDARU PALACE HOTEL - MODERN UK STYLE CSS
    Responsive for laptop, desktop, iPad, tablets & phones
    Includes modern mobile hamburger menu
+   Site name and menu title fixed for all screen sizes
    ===================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
@@ -198,32 +199,44 @@ input[type="submit"] {
   pointer-events: none;
 }
 
+/* ==============================
+   TOP HEADER / SITE NAME
+   Fixed so HEDARU PALACE HOTEL shows fully
+   ============================== */
+
 .head-top {
   position: relative;
   z-index: 60;
   width: var(--container);
   margin: 0 auto;
-  padding: 14px 18px 14px 24px;
+  padding: 14px 18px 14px 22px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
   background: rgba(17, 24, 39, 0.48);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
 }
 
 .head-top span:first-child {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: calc(100% - 62px);
   font-family: "Playfair Display", Georgia, serif;
   color: var(--white);
-  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-size: clamp(0.82rem, 2.4vw, 1.25rem);
   font-weight: 800;
-  letter-spacing: 0.06em;
+  line-height: 1.15;
+  letter-spacing: 0.035em;
   text-transform: uppercase;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .head-top span {
@@ -265,7 +278,7 @@ input[type="submit"] {
   transform: scale(0.96);
 }
 
-/* Hamburger button if you change the HTML to a button */
+/* Hamburger button if your HTML uses button */
 .menu-btn {
   width: 46px;
   height: 46px;
@@ -355,6 +368,7 @@ input[type="submit"] {
 
 /* ==============================
    MODERN SIDE NAVIGATION
+   Menu title fixed so it does not overlap close icon
    ============================== */
 
 .sidenav {
@@ -389,12 +403,17 @@ input[type="submit"] {
 .sidenav::before {
   content: "Menu";
   display: block;
-  margin: 4px 58px 28px 4px;
+  width: calc(100% - 64px);
+  max-width: 100%;
+  margin: 4px 64px 28px 4px;
   color: var(--white);
   font-family: "Playfair Display", Georgia, serif;
-  font-size: 1.8rem;
+  font-size: clamp(1.35rem, 5vw, 1.8rem);
   font-weight: 800;
-  letter-spacing: -0.02em;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .cancel-btn {
@@ -1031,7 +1050,14 @@ input[type="submit"] {
   }
 
   .head-top {
-    padding: 14px 18px;
+    padding: 13px 15px 13px 18px;
+    gap: 10px;
+  }
+
+  .head-top span:first-child {
+    max-width: calc(100% - 58px);
+    font-size: clamp(0.78rem, 2.8vw, 1.08rem);
+    letter-spacing: 0.028em;
   }
 
   .head-bottom {
@@ -1089,23 +1115,28 @@ input[type="submit"] {
   }
 
   .head-top {
-    padding: 12px 12px 12px 18px;
+    padding: 12px 12px 12px 16px;
     border-radius: 22px;
+    gap: 10px;
   }
 
   .head-top span:first-child {
-    max-width: 220px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 0.95rem;
-    letter-spacing: 0.04em;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: calc(100% - 54px);
+    font-size: clamp(0.72rem, 3.4vw, 0.95rem);
+    line-height: 1.15;
+    letter-spacing: 0.025em;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
   }
 
   .head-top span:last-child,
   .menu-btn {
     width: 42px;
     height: 42px;
-    flex-basis: 42px;
+    flex: 0 0 42px;
     font-size: 1.2rem;
   }
 
@@ -1118,8 +1149,10 @@ input[type="submit"] {
   }
 
   .sidenav::before {
-    margin-bottom: 22px;
-    font-size: 1.55rem;
+    width: calc(100% - 58px);
+    margin: 3px 58px 22px 2px;
+    font-size: clamp(1.25rem, 6vw, 1.55rem);
+    line-height: 1.15;
   }
 
   .cancel-btn {
@@ -1302,6 +1335,11 @@ input[type="submit"] {
    ============================== */
 
 @media (min-width: 390px) and (max-width: 430px) {
+  .head-top span:first-child {
+    font-size: clamp(0.76rem, 3.2vw, 0.98rem);
+    letter-spacing: 0.025em;
+  }
+
   .book {
     padding: 24px 20px;
   }
@@ -1327,14 +1365,34 @@ input[type="submit"] {
    ============================== */
 
 @media (max-width: 380px) {
+  .head-top {
+    padding: 10px 10px 10px 14px;
+    gap: 8px;
+  }
+
   .head-top span:first-child {
-    max-width: 185px;
-    font-size: 0.88rem;
+    max-width: calc(100% - 48px);
+    font-size: clamp(0.66rem, 3.7vw, 0.82rem);
+    letter-spacing: 0.018em;
+  }
+
+  .head-top span:last-child,
+  .menu-btn {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    font-size: 1.05rem;
   }
 
   .sidenav {
     width: min(315px, calc(100% - 14px));
     padding: 20px;
+  }
+
+  .sidenav::before {
+    width: calc(100% - 54px);
+    margin-right: 54px;
+    font-size: 1.32rem;
   }
 
   .navbar li a {
