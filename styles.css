@@ -3,6 +3,7 @@
    Responsive for laptop, desktop, iPad, tablets & phones
    Premium round logo header
    Mobile-only fixed top navigation
+   Mobile hero H2 centered
    ===================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
@@ -1236,6 +1237,7 @@ input[type="submit"] {
 /* ==============================
    ALL PHONES
    Fixed navigation only starts here
+   H2 centered on mobile devices
    ============================== */
 
 @media (max-width: 600px) {
@@ -1347,34 +1349,48 @@ input[type="submit"] {
     font-size: 0.96rem;
   }
 
+  /*
+    Mobile hero text alignment fix.
+    This centers <h2>HEDARU PALACE HOTEL</h2> on all phones.
+  */
   .head-bottom {
-    text-align: left;
+    text-align: center;
     place-content: center;
+    justify-items: center;
     padding: 42px 0 100px;
   }
 
-  .head-bottom h2,
+  .head-bottom h2 {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
   .head-bottom p {
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
 
   .head-btn {
     width: 100%;
-    margin-left: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .title,
   .title2 {
-    margin-left: 0;
-    margin-right: 0;
-    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
 
   .title::after,
   .title2::after {
-    left: 0;
-    transform: none;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .services-container {
@@ -1598,11 +1614,19 @@ input[type="submit"] {
   }
 
   .head-bottom h2 {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 2.15rem;
+    text-align: center;
   }
 
   .head-bottom p {
+    margin-left: auto;
+    margin-right: auto;
     font-size: 0.96rem;
+    text-align: center;
   }
 
   .btn,
