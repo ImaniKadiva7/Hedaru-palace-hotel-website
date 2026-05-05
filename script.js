@@ -1,4 +1,4 @@
-const navBtn = document.getElementById('nav-btn');
+/*const navBtn = document.getElementById('nav-btn');
 const cancelBtn = document.getElementById('cancel-btn');
 const sideNav = document.getElementById('sidenav');
 const modal = document.getElementById('modal');
@@ -18,7 +18,7 @@ window.addEventListener('click', function(event){
         sideNav.classList.remove('show');
         modal.classList.remove('showModal');
     }
-});
+});*/
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
