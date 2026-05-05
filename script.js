@@ -75,191 +75,229 @@ window.addEventListener('click', function(event){
   });
 </script>*/
 
-/* =====================================================
-   HEDARU PALACE HOTEL - NAVIGATION SCRIPT
-   Professional responsive navigation control
-   ===================================================== */
+"use strict";
 
-(function () {
-  "use strict";
+document.addEventListener("DOMContentLoaded", () => {
+  const whatsappPhoneNumber = "255625888777";
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const navButton = document.getElementById("nav-btn");
-    const closeButton = document.getElementById("cancel-btn");
-    const sideNav = document.getElementById("sidenav") || document.querySelector(".sidenav");
-    const navLinks = sideNav ? sideNav.querySelectorAll("a") : [];
+  const navBtn = document.getElementById("nav-btn");
+  const cancelBtn = document.getElementById("cancel-btn");
+  const sidenav = document.getElementById("sidenav");
+  const modal = document.getElementById("modal");
+  const navLinks = document.querySelectorAll(".navbar a");
 
-    let overlay = document.getElementById("modal") || document.querySelector(".nav-overlay");
+  const heroBookingBtn = document.getElementById("hero-booking-btn");
+  const bookingForm = document.getElementById("booking-form");
+  const bookingSection = document.getElementById("booking");
+  const bookingNote = document.getElementById("booking-note");
 
-    if (!navButton || !sideNav) {
-      return;
+  const roomChoice = document.getElementById("room-choice");
+  const checkinDate = document.getElementById("checkin-date");
+  const checkoutDate = document.getElementById("checkout-date");
+  const adults = document.getElementById("adult");
+  const children = document.getElementById("children");
+  const roomsCount = document.getElementById("rooms-count");
+
+  const roomBookButtons = document.querySelectorAll(".room-book-btn");
+  const restaurantBookingBtn = document.getElementById("restaurant-booking-btn");
+
+  const today = new Date().toISOString().split("T")[0];
+
+  if (checkinDate) {
+    checkinDate.min = today;
+  }
+
+  if (checkoutDate) {
+    checkoutDate.min = today;
+  }
+
+  const openNavigation = () => {
+    if (!sidenav || !modal) return;
+
+    sidenav.classList.add("show");
+    modal.classList.add("showModal");
+    document.body.classList.add("nav-open");
+
+    if (navBtn) {
+      navBtn.setAttribute("aria-expanded", "true");
     }
+  };
 
-    /*
-      Create an overlay automatically if your HTML does not already have one.
-      This avoids relying on unsafe HTML injection and keeps the menu reliable.
-    */
-    if (!overlay) {
-      overlay = document.createElement("div");
-      overlay.className = "nav-overlay";
-      overlay.setAttribute("aria-hidden", "true");
-      document.body.appendChild(overlay);
+  const closeNavigation = () => {
+    if (!sidenav || !modal) return;
+
+    sidenav.classList.remove("show");
+    modal.classList.remove("showModal");
+    document.body.classList.remove("nav-open");
+
+    if (navBtn) {
+      navBtn.setAttribute("aria-expanded", "false");
     }
+  };
 
-    /*
-      Accessibility setup.
-      This keeps the menu understandable for screen readers.
-    */
-    if (!sideNav.id) {
-      sideNav.id = "sidenav";
-    }
+  const scrollToBooking = () => {
+    if (!bookingSection) return;
 
-    navButton.setAttribute("aria-controls", sideNav.id);
-    navButton.setAttribute("aria-expanded", "false");
-
-    if (!navButton.getAttribute("aria-label")) {
-      navButton.setAttribute("aria-label", "Open navigation menu");
-    }
-
-    if (closeButton && !closeButton.getAttribute("aria-label")) {
-      closeButton.setAttribute("aria-label", "Close navigation menu");
-    }
-
-    sideNav.setAttribute("aria-hidden", "true");
-
-    /*
-      Focusable elements inside the side navigation.
-      Used to return focus cleanly after closing.
-    */
-    const getFocusableElements = function () {
-      return sideNav.querySelectorAll(
-        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
-      );
-    };
-
-    function openNavigation() {
-      sideNav.classList.add("show");
-      overlay.classList.add("showModal");
-      document.body.classList.add("nav-open");
-
-      navButton.setAttribute("aria-expanded", "true");
-      navButton.setAttribute("aria-label", "Close navigation menu");
-      sideNav.setAttribute("aria-hidden", "false");
-      overlay.setAttribute("aria-hidden", "false");
-
-      const firstFocusable = getFocusableElements()[0];
-
-      if (firstFocusable) {
-        setTimeout(function () {
-          firstFocusable.focus();
-        }, 120);
-      }
-    }
-
-    function closeNavigation() {
-      sideNav.classList.remove("show");
-      overlay.classList.remove("showModal");
-      document.body.classList.remove("nav-open");
-
-      navButton.setAttribute("aria-expanded", "false");
-      navButton.setAttribute("aria-label", "Open navigation menu");
-      sideNav.setAttribute("aria-hidden", "true");
-      overlay.setAttribute("aria-hidden", "true");
-
-      navButton.focus();
-    }
-
-    function toggleNavigation() {
-      const isOpen = sideNav.classList.contains("show");
-
-      if (isOpen) {
-        closeNavigation();
-      } else {
-        openNavigation();
-      }
-    }
-
-    /*
-      Open / close from hamburger button.
-    */
-    navButton.addEventListener("click", function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-      toggleNavigation();
+    bookingSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
     });
+  };
 
-    /*
-      Close from X button.
-    */
-    if (closeButton) {
-      closeButton.addEventListener("click", function (event) {
-        event.preventDefault();
-        closeNavigation();
-      });
+  const showBookingMessage = (message, isError = false) => {
+    if (!bookingNote) return;
+
+    bookingNote.textContent = message;
+    bookingNote.style.color = isError ? "#fecaca" : "";
+  };
+
+  const isValidPositiveNumber = (value, min, max) => {
+    const number = Number(value);
+    return Number.isInteger(number) && number >= min && number <= max;
+  };
+
+  const buildWhatsAppMessage = () => {
+    const selectedRoom = roomChoice.value.trim();
+    const checkin = checkinDate.value;
+    const checkout = checkoutDate.value;
+    const adultCount = adults.value;
+    const childrenCount = children.value;
+    const roomCount = roomsCount.value;
+
+    const message = [
+      "Hello Hedaru Palace Hotel,",
+      "",
+      "I would like to request a booking.",
+      "",
+      `Room choice: ${selectedRoom}`,
+      `Check-in date: ${checkin}`,
+      `Check-out date: ${checkout}`,
+      `Adults: ${adultCount}`,
+      `Children: ${childrenCount}`,
+      `Number of rooms: ${roomCount}`,
+      "",
+      "Guest name:",
+      "Phone number:",
+      "Special request:",
+      "",
+      "Please confirm availability and total price. Thank you."
+    ];
+
+    return message.join("\n");
+  };
+
+  const validateBookingForm = () => {
+    const selectedRoom = roomChoice.value.trim();
+
+    if (!selectedRoom) {
+      showBookingMessage("Please select a room choice before sending your WhatsApp request.", true);
+      roomChoice.focus();
+      return false;
     }
 
-    /*
-      Close when clicking the dark overlay.
-    */
-    overlay.addEventListener("click", function () {
-      closeNavigation();
-    });
+    if (!checkinDate.value) {
+      showBookingMessage("Please select your check-in date.", true);
+      checkinDate.focus();
+      return false;
+    }
 
-    /*
-      Close automatically when any navigation option is selected.
-    */
-    navLinks.forEach(function (link) {
-      link.addEventListener("click", function () {
-        closeNavigation();
-      });
-    });
+    if (!checkoutDate.value) {
+      showBookingMessage("Please select your check-out date.", true);
+      checkoutDate.focus();
+      return false;
+    }
 
-    /*
-      Close with Escape key.
-    */
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && sideNav.classList.contains("show")) {
-        closeNavigation();
+    if (checkoutDate.value <= checkinDate.value) {
+      showBookingMessage("Check-out date must be after the check-in date.", true);
+      checkoutDate.focus();
+      return false;
+    }
+
+    if (!isValidPositiveNumber(adults.value, 1, 20)) {
+      showBookingMessage("Please enter a valid number of adults between 1 and 20.", true);
+      adults.focus();
+      return false;
+    }
+
+    if (!isValidPositiveNumber(children.value, 0, 20)) {
+      showBookingMessage("Please enter a valid number of children between 0 and 20.", true);
+      children.focus();
+      return false;
+    }
+
+    if (!isValidPositiveNumber(roomsCount.value, 1, 10)) {
+      showBookingMessage("Please enter a valid number of rooms between 1 and 10.", true);
+      roomsCount.focus();
+      return false;
+    }
+
+    return true;
+  };
+
+  if (navBtn) {
+    navBtn.setAttribute("aria-expanded", "false");
+    navBtn.addEventListener("click", openNavigation);
+  }
+
+  if (cancelBtn) {
+    cancelBtn.addEventListener("click", closeNavigation);
+  }
+
+  if (modal) {
+    modal.addEventListener("click", closeNavigation);
+  }
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", closeNavigation);
+  });
+
+  if (heroBookingBtn) {
+    heroBookingBtn.addEventListener("click", scrollToBooking);
+  }
+
+  if (checkinDate && checkoutDate) {
+    checkinDate.addEventListener("change", () => {
+      checkoutDate.min = checkinDate.value || today;
+
+      if (checkoutDate.value && checkoutDate.value <= checkinDate.value) {
+        checkoutDate.value = "";
       }
     });
+  }
 
-    /*
-      Keep keyboard focus inside the open navigation.
-      This prevents users from tabbing behind the menu.
-    */
-    sideNav.addEventListener("keydown", function (event) {
-      if (event.key !== "Tab" || !sideNav.classList.contains("show")) {
-        return;
+  roomBookButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const selectedRoom = button.dataset.room;
+
+      if (roomChoice && selectedRoom) {
+        roomChoice.value = selectedRoom;
       }
 
-      const focusableElements = Array.from(getFocusableElements());
-
-      if (focusableElements.length === 0) {
-        return;
-      }
-
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
-
-      if (event.shiftKey && document.activeElement === firstElement) {
-        event.preventDefault();
-        lastElement.focus();
-      }
-
-      if (!event.shiftKey && document.activeElement === lastElement) {
-        event.preventDefault();
-        firstElement.focus();
-      }
-    });
-
-    /*
-      Close the navigation after resizing to desktop/tablet widths
-      if the menu was left open on mobile.
-    */
-    window.addEventListener("resize", function () {
-      if (window.innerWidth > 1100 && sideNav.classList.contains("show")) {
-        closeNavigation();
-      }
+      scrollToBooking();
+      showBookingMessage("Room selected. Complete your dates and guest details, then send your WhatsApp request.");
     });
   });
-})();
+
+  if (restaurantBookingBtn) {
+    restaurantBookingBtn.addEventListener("click", () => {
+      scrollToBooking();
+      showBookingMessage("For restaurant or catering booking, add your request in the WhatsApp special request line.");
+    });
+  }
+
+  if (bookingForm) {
+    bookingForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!validateBookingForm()) {
+        return;
+      }
+
+      const message = buildWhatsAppMessage();
+      const whatsappUrl = `https://wa.me/${whatsappPhoneNumber}?text=${encodeURIComponent(message)}`;
+
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      showBookingMessage("Your WhatsApp booking request is ready. Please review and send it on WhatsApp.");
+    });
+  }
+});
