@@ -1,6 +1,7 @@
 /* =====================================================
    HEDARU PALACE HOTEL - MODERN UK STYLE CSS
    Responsive for laptop, desktop, iPad, tablets & phones
+   Includes modern mobile hamburger menu
    ===================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
@@ -10,7 +11,6 @@
    ============================== */
 
 :root {
-  /* UK luxury company-style colours */
   --primary: #d4af37;
   --primary-light: #f5dc84;
   --primary-dark: #9b7a16;
@@ -200,19 +200,20 @@ input[type="submit"] {
 
 .head-top {
   position: relative;
-  z-index: 2;
+  z-index: 60;
   width: var(--container);
   margin: 0 auto;
-  padding: 16px 22px;
+  padding: 14px 18px 14px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 14px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
-  background: rgba(17, 24, 39, 0.42);
+  background: rgba(17, 24, 39, 0.48);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
 }
 
 .head-top span:first-child {
@@ -222,12 +223,7 @@ input[type="submit"] {
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-}
-
-.head-top span:last-child {
-  color: var(--white);
-  font-size: 1.5rem;
-  cursor: pointer;
+  white-space: nowrap;
 }
 
 .head-top span {
@@ -237,6 +233,67 @@ input[type="submit"] {
 .head-top span:hover {
   color: var(--primary-light);
   transform: translateY(-1px);
+}
+
+/* Hamburger button if your HTML still uses span */
+.head-top span:last-child {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--white);
+  font-size: 1.35rem;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.head-top span:last-child:hover {
+  background: var(--primary-light);
+  color: var(--dark);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(212, 175, 55, 0.28);
+}
+
+.head-top span:last-child:active {
+  transform: scale(0.96);
+}
+
+/* Hamburger button if you change the HTML to a button */
+.menu-btn {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--white);
+  font-size: 1.35rem;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.menu-btn:hover {
+  background: var(--primary-light);
+  color: var(--dark);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(212, 175, 55, 0.28);
+}
+
+.menu-btn:active {
+  transform: scale(0.96);
 }
 
 .head-bottom {
@@ -297,63 +354,118 @@ input[type="submit"] {
 }
 
 /* ==============================
-   SIDE NAVIGATION
+   MODERN SIDE NAVIGATION
    ============================== */
 
 .sidenav {
-  width: min(390px, 100%);
-  min-height: 100svh;
+  width: min(420px, calc(100% - 24px));
+  min-height: calc(100svh - 24px);
   position: fixed;
-  top: 0;
-  right: -105%;
-  z-index: 50;
-  padding: 34px;
-  background: rgba(17, 24, 39, 0.98);
+  top: 12px;
+  right: -110%;
+  z-index: 100;
+  padding: 26px;
+  border-radius: 28px 0 0 28px;
+  background:
+    linear-gradient(160deg, rgba(17, 24, 39, 0.98), rgba(31, 41, 55, 0.98)),
+    radial-gradient(circle at top right, rgba(212, 175, 55, 0.22), transparent 34%);
   color: var(--white);
-  transition: right var(--transition);
-  box-shadow: -30px 0 80px rgba(0, 0, 0, 0.35);
+  box-shadow: -30px 0 80px rgba(0, 0, 0, 0.38);
+  transition:
+    right 0.38s ease,
+    opacity 0.38s ease,
+    transform 0.38s ease;
+  opacity: 0;
+  transform: translateX(20px);
+  overflow-y: auto;
 }
 
 .sidenav.show {
   right: 0;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sidenav::before {
+  content: "Menu";
+  display: block;
+  margin: 4px 58px 28px 4px;
+  color: var(--white);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .cancel-btn {
   position: absolute;
-  top: 24px;
-  right: 28px;
+  top: 20px;
+  right: 22px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
   color: var(--primary-light);
-  font-size: 1.55rem;
+  font-size: 1.25rem;
   cursor: pointer;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition);
+}
+
+.cancel-btn:hover {
+  background: var(--primary-light);
+  color: var(--dark);
+  transform: rotate(90deg);
 }
 
 .navbar {
-  margin-top: 74px;
+  margin-top: 18px;
+}
+
+.navbar li {
+  margin-bottom: 10px;
 }
 
 .navbar li a {
-  display: block;
-  padding: 17px 0;
+  display: flex;
+  align-items: center;
+  min-height: 54px;
+  padding: 14px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.055);
   color: rgba(255, 255, 255, 0.86);
-  font-size: 1.08rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 800;
   text-transform: capitalize;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  transition: color var(--transition), padding-left var(--transition);
+  letter-spacing: 0.01em;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    transform var(--transition),
+    padding-left var(--transition);
 }
 
 .navbar li a:hover {
+  padding-left: 24px;
+  background: rgba(212, 175, 55, 0.16);
+  border-color: rgba(212, 175, 55, 0.34);
   color: var(--primary-light);
-  padding-left: 12px;
+  transform: translateX(2px);
 }
 
 .showModal {
   position: fixed;
   inset: 0;
-  z-index: 40;
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  z-index: 90;
+  background: rgba(8, 13, 23, 0.58);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
 }
 
 /* ==============================
@@ -960,7 +1072,6 @@ input[type="submit"] {
 
 /* ==============================
    ALL PHONES
-   Check In / Check Out mobile fix
    ============================== */
 
 @media (max-width: 600px) {
@@ -978,13 +1089,55 @@ input[type="submit"] {
   }
 
   .head-top {
-    border-radius: 20px;
-    padding: 14px 16px;
-    gap: 12px;
+    padding: 12px 12px 12px 18px;
+    border-radius: 22px;
   }
 
   .head-top span:first-child {
-    max-width: 230px;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+  }
+
+  .head-top span:last-child,
+  .menu-btn {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+    font-size: 1.2rem;
+  }
+
+  .sidenav {
+    width: min(340px, calc(100% - 18px));
+    min-height: calc(100svh - 18px);
+    top: 9px;
+    padding: 22px;
+    border-radius: 24px 0 0 24px;
+  }
+
+  .sidenav::before {
+    margin-bottom: 22px;
+    font-size: 1.55rem;
+  }
+
+  .cancel-btn {
+    top: 17px;
+    right: 18px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .navbar li {
+    margin-bottom: 9px;
+  }
+
+  .navbar li a {
+    min-height: 52px;
+    padding: 13px 16px;
+    border-radius: 16px;
     font-size: 0.96rem;
   }
 
@@ -1174,6 +1327,21 @@ input[type="submit"] {
    ============================== */
 
 @media (max-width: 380px) {
+  .head-top span:first-child {
+    max-width: 185px;
+    font-size: 0.88rem;
+  }
+
+  .sidenav {
+    width: min(315px, calc(100% - 14px));
+    padding: 20px;
+  }
+
+  .navbar li a {
+    min-height: 50px;
+    font-size: 0.92rem;
+  }
+
   .head-bottom h2 {
     font-size: 2.15rem;
   }
