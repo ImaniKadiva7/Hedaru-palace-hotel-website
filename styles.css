@@ -5,6 +5,7 @@
    Mobile-only fixed top navigation
    Mobile hero H2 centered
    Booking submit button text centered for all devices
+   Footer copyright centered at bottom
    ===================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
@@ -1055,7 +1056,7 @@ input[type="submit"] {
 .footer-container {
   width: var(--container);
   margin: 0 auto;
-  padding: 64px 0;
+  padding: 64px 0 24px;
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1.3fr;
   gap: 34px;
@@ -1121,6 +1122,20 @@ input[type="submit"] {
   display: block;
 }
 
+/* Footer copyright text */
+.footer-copyright {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin: 28px auto 0;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.6;
+  text-align: center;
+}
+
 /* ==============================
    ACCESSIBILITY
    ============================== */
@@ -1154,6 +1169,10 @@ input[type="submit"] {
 
   .footer-container {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-copyright {
+    grid-column: 1 / -1;
   }
 }
 
@@ -1509,7 +1528,15 @@ input[type="submit"] {
 
   .footer-container {
     grid-template-columns: 1fr;
-    padding: 46px 0;
+    padding: 46px 0 22px;
+  }
+
+  .footer-copyright {
+    grid-column: 1 / -1;
+    margin-top: 22px;
+    padding-top: 18px;
+    font-size: 0.86rem;
+    text-align: center;
   }
 
   .social-icons {
@@ -1663,5 +1690,9 @@ input[type="submit"] {
 
   .book {
     padding: 20px 15px;
+  }
+
+  .footer-copyright {
+    font-size: 0.82rem;
   }
 }
