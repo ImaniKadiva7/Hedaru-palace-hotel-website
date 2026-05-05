@@ -232,7 +232,7 @@ input[type="submit"] {
   height: 58px;
   max-width: 260px;
   display: block;
-  background: url("Hedaru_palace_logo.png") left center / contain no-repeat;
+  background: url("./Hedaru_palace_logo.png") left center / contain no-repeat;
   font-size: 0;
   line-height: 0;
   color: transparent;
