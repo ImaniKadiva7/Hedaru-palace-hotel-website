@@ -1,7 +1,7 @@
 /* =====================================================
    HEDARU PALACE HOTEL - MODERN UK STYLE CSS
    Responsive for laptop, desktop, iPad, tablets & phones
-   Premium round logo header + 3-bar hamburger + X close icon
+   Premium round logo header + centered 3-bar hamburger + X close icon
    ===================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
@@ -225,7 +225,7 @@ input[type="submit"] {
 /*
   Brand mark:
   - This keeps the accessible text in HTML but visually replaces it with the logo.
-  - Save the file as: Hedaru_palace_logo.png
+  - Save the logo file as: Hedaru_palace_logo.png
 */
 .head-top span:first-child {
   width: 68px;
@@ -267,7 +267,7 @@ input[type="submit"] {
     0 0 0 7px rgba(212, 175, 55, 0.22);
 }
 
-/* Recommended semantic HTML support:
+/* Semantic HTML support:
    <a class="brand" href="/" aria-label="Hedaru Palace Hotel home">
      <img class="brand-logo" src="./Hedaru_palace_logo.png" alt="Hedaru Palace Hotel logo">
    </a>
@@ -313,20 +313,24 @@ input[type="submit"] {
 
 /* ==============================
    HAMBURGER MENU BUTTON
-   3 bars before menu opens
+   3 bars centered inside circle
    ============================== */
 
+/* Supports old HTML where hamburger is a span */
 .head-top span:last-child {
   width: 48px;
   height: 48px;
   flex: 0 0 48px;
   position: relative;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.12);
   color: var(--white);
   font-size: 0;
+  line-height: 1;
   cursor: pointer;
   transition:
     background var(--transition),
@@ -335,18 +339,22 @@ input[type="submit"] {
     box-shadow var(--transition);
 }
 
+/* Supports recommended HTML where hamburger is a button */
 .menu-btn {
   width: 48px;
   height: 48px;
   flex: 0 0 48px;
   position: relative;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   border: none;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.12);
   color: var(--white);
   font-size: 0;
+  line-height: 1;
   cursor: pointer;
   transition:
     background var(--transition),
@@ -360,18 +368,23 @@ input[type="submit"] {
   display: none;
 }
 
+/* Centered 3-bar hamburger icon */
 .head-top span:last-child::before,
 .menu-btn::before {
   content: "";
-  width: 21px;
-  height: 14px;
+  width: 22px;
+  height: 16px;
   display: block;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
   background:
-    linear-gradient(var(--white), var(--white)) 0 0 / 100% 2px no-repeat,
-    linear-gradient(var(--white), var(--white)) 0 50% / 100% 2px no-repeat,
-    linear-gradient(var(--white), var(--white)) 0 100% / 100% 2px no-repeat;
+    linear-gradient(var(--white), var(--white)) center top / 100% 2px no-repeat,
+    linear-gradient(var(--white), var(--white)) center center / 100% 2px no-repeat,
+    linear-gradient(var(--white), var(--white)) center bottom / 100% 2px no-repeat;
   border-radius: 999px;
-  transition: background var(--transition), transform var(--transition);
+  transform: none;
+  transition: background var(--transition);
 }
 
 .head-top span:last-child:hover,
@@ -385,9 +398,9 @@ input[type="submit"] {
 .head-top span:last-child:hover::before,
 .menu-btn:hover::before {
   background:
-    linear-gradient(var(--dark), var(--dark)) 0 0 / 100% 2px no-repeat,
-    linear-gradient(var(--dark), var(--dark)) 0 50% / 100% 2px no-repeat,
-    linear-gradient(var(--dark), var(--dark)) 0 100% / 100% 2px no-repeat;
+    linear-gradient(var(--dark), var(--dark)) center top / 100% 2px no-repeat,
+    linear-gradient(var(--dark), var(--dark)) center center / 100% 2px no-repeat,
+    linear-gradient(var(--dark), var(--dark)) center bottom / 100% 2px no-repeat;
 }
 
 .head-top span:last-child:active,
@@ -1257,12 +1270,16 @@ input[type="submit"] {
     width: 42px;
     height: 42px;
     flex: 0 0 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
   }
 
   .head-top span:last-child::before,
   .menu-btn::before {
     width: 20px;
-    height: 13px;
+    height: 15px;
   }
 
   .sidenav {
@@ -1509,12 +1526,16 @@ input[type="submit"] {
     width: 38px;
     height: 38px;
     flex: 0 0 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
   }
 
   .head-top span:last-child::before,
   .menu-btn::before {
     width: 18px;
-    height: 12px;
+    height: 14px;
   }
 
   .sidenav {
