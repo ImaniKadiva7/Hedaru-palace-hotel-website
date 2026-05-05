@@ -1,7 +1,7 @@
 /* =====================================================
    HEDARU PALACE HOTEL - MODERN UK STYLE CSS
    Responsive for laptop, desktop, iPad, tablets & phones
-   Premium round logo header + centered 3-bar hamburger + X close icon
+   Premium round logo header + perfectly centered hamburger
    ===================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
@@ -41,7 +41,9 @@
    RESET
    ============================== */
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -58,6 +60,10 @@ body {
   color: var(--text);
   line-height: 1.7;
   overflow-x: hidden;
+}
+
+body.nav-open {
+  overflow: hidden;
 }
 
 img {
@@ -80,6 +86,11 @@ input,
 select,
 textarea {
   font-family: inherit;
+}
+
+button {
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 h1,
@@ -223,9 +234,8 @@ input[type="submit"] {
 }
 
 /*
-  Brand mark:
-  - This keeps the accessible text in HTML but visually replaces it with the logo.
-  - Save the logo file as: Hedaru_palace_logo.png
+  Logo badge.
+  Save the logo file as: Hedaru_palace_logo.png
 */
 .head-top span:first-child {
   width: 68px;
@@ -267,11 +277,7 @@ input[type="submit"] {
     0 0 0 7px rgba(212, 175, 55, 0.22);
 }
 
-/* Semantic HTML support:
-   <a class="brand" href="/" aria-label="Hedaru Palace Hotel home">
-     <img class="brand-logo" src="./Hedaru_palace_logo.png" alt="Hedaru Palace Hotel logo">
-   </a>
-*/
+/* Semantic logo support */
 .head-top .brand,
 .head-top .logo-link {
   width: 68px;
@@ -313,49 +319,35 @@ input[type="submit"] {
 
 /* ==============================
    HAMBURGER MENU BUTTON
-   3 bars centered inside circle
+   Perfectly centered 3 bars
    ============================== */
 
-/* Supports old HTML where hamburger is a span */
-.head-top span:last-child {
-  width: 48px;
-  height: 48px;
-  flex: 0 0 48px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--white);
-  font-size: 0;
-  line-height: 1;
-  cursor: pointer;
-  transition:
-    background var(--transition),
-    color var(--transition),
-    transform var(--transition),
-    box-shadow var(--transition);
-}
-
-/* Supports recommended HTML where hamburger is a button */
+/*
+  This targets:
+  1. old HTML: <span id="nav-btn">MENU</span>
+  2. recommended HTML: <button id="nav-btn" class="menu-btn"></button>
+*/
+#nav-btn,
+.head-top span:last-child,
 .menu-btn {
-  width: 48px;
-  height: 48px;
-  flex: 0 0 48px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  border: none;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--white);
-  font-size: 0;
-  line-height: 1;
-  cursor: pointer;
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  flex: 0 0 48px !important;
+  position: relative !important;
+  display: block !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: var(--white) !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  text-indent: -9999px !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
   transition:
     background var(--transition),
     color var(--transition),
@@ -363,46 +355,49 @@ input[type="submit"] {
     box-shadow var(--transition);
 }
 
+#nav-btn i,
 .head-top span:last-child i,
 .menu-btn i {
-  display: none;
+  display: none !important;
 }
 
-/* Centered 3-bar hamburger icon */
+/*
+  The icon is drawn from the exact centre of the circle.
+  top: 50% + left: 50% + transform translate(-50%, -50%)
+  prevents the bars from sitting too high, too low, left, or right.
+*/
+#nav-btn::before,
 .head-top span:last-child::before,
 .menu-btn::before {
   content: "";
-  width: 22px;
-  height: 16px;
-  display: block;
-  flex: 0 0 auto;
-  margin: 0;
-  padding: 0;
-  background:
-    linear-gradient(var(--white), var(--white)) center top / 100% 2px no-repeat,
-    linear-gradient(var(--white), var(--white)) center center / 100% 2px no-repeat,
-    linear-gradient(var(--white), var(--white)) center bottom / 100% 2px no-repeat;
-  border-radius: 999px;
-  transform: none;
-  transition: background var(--transition);
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 22px !important;
+  height: 2.4px !important;
+  border-radius: 999px !important;
+  background: currentColor !important;
+  color: currentColor !important;
+  box-shadow:
+    0 -7px 0 currentColor,
+    0 7px 0 currentColor !important;
+  transform: translate(-50%, -50%) !important;
+  transition:
+    background var(--transition),
+    box-shadow var(--transition),
+    color var(--transition);
 }
 
+#nav-btn:hover,
 .head-top span:last-child:hover,
 .menu-btn:hover {
-  background: var(--primary-light);
-  color: var(--dark);
+  background: var(--primary-light) !important;
+  color: var(--dark) !important;
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(212, 175, 55, 0.28);
 }
 
-.head-top span:last-child:hover::before,
-.menu-btn:hover::before {
-  background:
-    linear-gradient(var(--dark), var(--dark)) center top / 100% 2px no-repeat,
-    linear-gradient(var(--dark), var(--dark)) center center / 100% 2px no-repeat,
-    linear-gradient(var(--dark), var(--dark)) center bottom / 100% 2px no-repeat;
-}
-
+#nav-btn:active,
 .head-top span:last-child:active,
 .menu-btn:active {
   transform: scale(0.96);
@@ -471,7 +466,6 @@ input[type="submit"] {
 
 /* ==============================
    MODERN SIDE NAVIGATION
-   No "Menu" text, only close X icon
    ============================== */
 
 .sidenav {
@@ -507,6 +501,7 @@ input[type="submit"] {
   content: none;
 }
 
+/* Close X icon */
 .cancel-btn {
   position: absolute;
   top: 20px;
@@ -589,7 +584,8 @@ input[type="submit"] {
     padding-left var(--transition);
 }
 
-.navbar li a:hover {
+.navbar li a:hover,
+.navbar li a:focus {
   padding-left: 24px;
   background: rgba(212, 175, 55, 0.16);
   border-color: rgba(212, 175, 55, 0.34);
@@ -1265,21 +1261,24 @@ input[type="submit"] {
     padding: 4px;
   }
 
+  #nav-btn,
   .head-top span:last-child,
   .menu-btn {
-    width: 42px;
-    height: 42px;
-    flex: 0 0 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    flex: 0 0 42px !important;
   }
 
+  #nav-btn::before,
   .head-top span:last-child::before,
   .menu-btn::before {
-    width: 20px;
-    height: 15px;
+    width: 20px !important;
+    height: 2.2px !important;
+    box-shadow:
+      0 -6.5px 0 currentColor,
+      0 6.5px 0 currentColor !important;
   }
 
   .sidenav {
@@ -1521,21 +1520,24 @@ input[type="submit"] {
     flex-basis: 50px;
   }
 
+  #nav-btn,
   .head-top span:last-child,
   .menu-btn {
-    width: 38px;
-    height: 38px;
-    flex: 0 0 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    flex: 0 0 38px !important;
   }
 
+  #nav-btn::before,
   .head-top span:last-child::before,
   .menu-btn::before {
-    width: 18px;
-    height: 14px;
+    width: 18px !important;
+    height: 2px !important;
+    box-shadow:
+      0 -6px 0 currentColor,
+      0 6px 0 currentColor !important;
   }
 
   .sidenav {
