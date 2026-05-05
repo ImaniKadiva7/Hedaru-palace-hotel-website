@@ -1,8 +1,7 @@
 /* =====================================================
    HEDARU PALACE HOTEL - MODERN UK STYLE CSS
    Responsive for laptop, desktop, iPad, tablets & phones
-   Includes modern mobile hamburger menu
-   Site name and menu title fixed for all screen sizes
+   Logo header + 3-bar hamburger + X close icon
    ===================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
@@ -200,8 +199,7 @@ input[type="submit"] {
 }
 
 /* ==============================
-   TOP HEADER / SITE NAME
-   Fixed so HEDARU PALACE HOTEL shows fully
+   TOP HEADER WITH LOGO
    ============================== */
 
 .head-top {
@@ -209,11 +207,12 @@ input[type="submit"] {
   z-index: 60;
   width: var(--container);
   margin: 0 auto;
-  padding: 14px 18px 14px 22px;
+  padding: 10px 14px 10px 18px;
+  min-height: 76px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
   background: rgba(17, 24, 39, 0.48);
@@ -223,42 +222,51 @@ input[type="submit"] {
   overflow: hidden;
 }
 
+/* 
+   This replaces the text "Hedaru Palace Hotel" with your logo.
+   Make sure the logo file is saved as: Hedaru_palace_logo.png
+*/
 .head-top span:first-child {
   flex: 1 1 auto;
   min-width: 0;
-  max-width: calc(100% - 62px);
-  font-family: "Playfair Display", Georgia, serif;
-  color: var(--white);
-  font-size: clamp(0.82rem, 2.4vw, 1.25rem);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: 0.035em;
-  text-transform: uppercase;
-  white-space: normal;
-  overflow-wrap: anywhere;
-  word-break: normal;
+  height: 58px;
+  max-width: 260px;
+  display: block;
+  background: url("Hedaru_palace_logo.png") left center / contain no-repeat;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  text-indent: -9999px;
+  overflow: hidden;
 }
 
-.head-top span {
-  transition: color var(--transition), transform var(--transition);
+/* If you later use an actual image in HTML, this will style it too */
+.head-top .logo,
+.head-top .site-logo,
+.head-top .brand-logo {
+  width: auto;
+  height: 58px;
+  max-width: 260px;
+  object-fit: contain;
 }
 
-.head-top span:hover {
-  color: var(--primary-light);
-  transform: translateY(-1px);
-}
+/* ==============================
+   HAMBURGER MENU BUTTON
+   3 bars before menu opens
+   ============================== */
 
-/* Hamburger button if your HTML still uses span */
+/* Support old HTML where hamburger is a span */
 .head-top span:last-child {
   width: 46px;
   height: 46px;
   flex: 0 0 46px;
+  position: relative;
   display: grid;
   place-items: center;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.12);
   color: var(--white);
-  font-size: 1.35rem;
+  font-size: 0;
   cursor: pointer;
   transition:
     background var(--transition),
@@ -267,29 +275,19 @@ input[type="submit"] {
     box-shadow var(--transition);
 }
 
-.head-top span:last-child:hover {
-  background: var(--primary-light);
-  color: var(--dark);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(212, 175, 55, 0.28);
-}
-
-.head-top span:last-child:active {
-  transform: scale(0.96);
-}
-
-/* Hamburger button if your HTML uses button */
+/* Support recommended HTML where hamburger is a button */
 .menu-btn {
   width: 46px;
   height: 46px;
   flex: 0 0 46px;
+  position: relative;
   display: grid;
   place-items: center;
   border: none;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.12);
   color: var(--white);
-  font-size: 1.35rem;
+  font-size: 0;
   cursor: pointer;
   transition:
     background var(--transition),
@@ -298,6 +296,28 @@ input[type="submit"] {
     box-shadow var(--transition);
 }
 
+/* Hide old Font Awesome bars if present */
+.head-top span:last-child i,
+.menu-btn i {
+  display: none;
+}
+
+/* 3-bar hamburger icon */
+.head-top span:last-child::before,
+.menu-btn::before {
+  content: "";
+  width: 21px;
+  height: 14px;
+  display: block;
+  background:
+    linear-gradient(var(--white), var(--white)) 0 0 / 100% 2px no-repeat,
+    linear-gradient(var(--white), var(--white)) 0 50% / 100% 2px no-repeat,
+    linear-gradient(var(--white), var(--white)) 0 100% / 100% 2px no-repeat;
+  border-radius: 999px;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.head-top span:last-child:hover,
 .menu-btn:hover {
   background: var(--primary-light);
   color: var(--dark);
@@ -305,9 +325,22 @@ input[type="submit"] {
   box-shadow: 0 12px 28px rgba(212, 175, 55, 0.28);
 }
 
+.head-top span:last-child:hover::before,
+.menu-btn:hover::before {
+  background:
+    linear-gradient(var(--dark), var(--dark)) 0 0 / 100% 2px no-repeat,
+    linear-gradient(var(--dark), var(--dark)) 0 50% / 100% 2px no-repeat,
+    linear-gradient(var(--dark), var(--dark)) 0 100% / 100% 2px no-repeat;
+}
+
+.head-top span:last-child:active,
 .menu-btn:active {
   transform: scale(0.96);
 }
+
+/* ==============================
+   HERO CONTENT
+   ============================== */
 
 .head-bottom {
   position: relative;
@@ -368,7 +401,7 @@ input[type="submit"] {
 
 /* ==============================
    MODERN SIDE NAVIGATION
-   Menu title fixed so it does not overlap close icon
+   No "Menu" text, only close X icon
    ============================== */
 
 .sidenav {
@@ -378,7 +411,7 @@ input[type="submit"] {
   top: 12px;
   right: -110%;
   z-index: 100;
-  padding: 26px;
+  padding: 82px 26px 26px;
   border-radius: 28px 0 0 28px;
   background:
     linear-gradient(160deg, rgba(17, 24, 39, 0.98), rgba(31, 41, 55, 0.98)),
@@ -400,22 +433,12 @@ input[type="submit"] {
   transform: translateX(0);
 }
 
+/* Removes the word "Menu" from the menu panel */
 .sidenav::before {
-  content: "Menu";
-  display: block;
-  width: calc(100% - 64px);
-  max-width: 100%;
-  margin: 4px 64px 28px 4px;
-  color: var(--white);
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(1.35rem, 5vw, 1.8rem);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  white-space: normal;
-  overflow-wrap: anywhere;
+  content: none;
 }
 
+/* Close button with X icon */
 .cancel-btn {
   position: absolute;
   top: 20px;
@@ -427,12 +450,37 @@ input[type="submit"] {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
   color: var(--primary-light);
-  font-size: 1.25rem;
+  font-size: 0;
   cursor: pointer;
   transition:
     background var(--transition),
     color var(--transition),
     transform var(--transition);
+}
+
+/* Hide old Font Awesome X if present */
+.cancel-btn i {
+  display: none;
+}
+
+/* CSS X icon */
+.cancel-btn::before,
+.cancel-btn::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 2.4px;
+  border-radius: 999px;
+  background: var(--primary-light);
+  transition: background var(--transition);
+}
+
+.cancel-btn::before {
+  transform: rotate(45deg);
+}
+
+.cancel-btn::after {
+  transform: rotate(-45deg);
 }
 
 .cancel-btn:hover {
@@ -441,8 +489,13 @@ input[type="submit"] {
   transform: rotate(90deg);
 }
 
+.cancel-btn:hover::before,
+.cancel-btn:hover::after {
+  background: var(--dark);
+}
+
 .navbar {
-  margin-top: 18px;
+  margin-top: 0;
 }
 
 .navbar li {
@@ -1050,14 +1103,21 @@ input[type="submit"] {
   }
 
   .head-top {
-    padding: 13px 15px 13px 18px;
+    min-height: 70px;
+    padding: 10px 14px 10px 16px;
     gap: 10px;
   }
 
   .head-top span:first-child {
-    max-width: calc(100% - 58px);
-    font-size: clamp(0.78rem, 2.8vw, 1.08rem);
-    letter-spacing: 0.028em;
+    height: 52px;
+    max-width: 220px;
+  }
+
+  .head-top .logo,
+  .head-top .site-logo,
+  .head-top .brand-logo {
+    height: 52px;
+    max-width: 220px;
   }
 
   .head-bottom {
@@ -1115,21 +1175,23 @@ input[type="submit"] {
   }
 
   .head-top {
-    padding: 12px 12px 12px 16px;
+    min-height: 64px;
+    padding: 8px 10px 8px 12px;
     border-radius: 22px;
-    gap: 10px;
+    gap: 8px;
   }
 
   .head-top span:first-child {
-    flex: 1 1 auto;
-    min-width: 0;
-    max-width: calc(100% - 54px);
-    font-size: clamp(0.72rem, 3.4vw, 0.95rem);
-    line-height: 1.15;
-    letter-spacing: 0.025em;
-    white-space: normal;
-    overflow: visible;
-    text-overflow: unset;
+    height: 48px;
+    max-width: 185px;
+    background-size: contain;
+  }
+
+  .head-top .logo,
+  .head-top .site-logo,
+  .head-top .brand-logo {
+    height: 48px;
+    max-width: 185px;
   }
 
   .head-top span:last-child,
@@ -1137,22 +1199,20 @@ input[type="submit"] {
     width: 42px;
     height: 42px;
     flex: 0 0 42px;
-    font-size: 1.2rem;
+  }
+
+  .head-top span:last-child::before,
+  .menu-btn::before {
+    width: 20px;
+    height: 13px;
   }
 
   .sidenav {
     width: min(340px, calc(100% - 18px));
     min-height: calc(100svh - 18px);
     top: 9px;
-    padding: 22px;
+    padding: 72px 22px 22px;
     border-radius: 24px 0 0 24px;
-  }
-
-  .sidenav::before {
-    width: calc(100% - 58px);
-    margin: 3px 58px 22px 2px;
-    font-size: clamp(1.25rem, 6vw, 1.55rem);
-    line-height: 1.15;
   }
 
   .cancel-btn {
@@ -1160,7 +1220,11 @@ input[type="submit"] {
     right: 18px;
     width: 40px;
     height: 40px;
-    font-size: 1.1rem;
+  }
+
+  .cancel-btn::before,
+  .cancel-btn::after {
+    width: 18px;
   }
 
   .navbar li {
@@ -1336,8 +1400,15 @@ input[type="submit"] {
 
 @media (min-width: 390px) and (max-width: 430px) {
   .head-top span:first-child {
-    font-size: clamp(0.76rem, 3.2vw, 0.98rem);
-    letter-spacing: 0.025em;
+    height: 50px;
+    max-width: 200px;
+  }
+
+  .head-top .logo,
+  .head-top .site-logo,
+  .head-top .brand-logo {
+    height: 50px;
+    max-width: 200px;
   }
 
   .book {
@@ -1366,14 +1437,21 @@ input[type="submit"] {
 
 @media (max-width: 380px) {
   .head-top {
-    padding: 10px 10px 10px 14px;
-    gap: 8px;
+    min-height: 58px;
+    padding: 7px 8px 7px 10px;
+    gap: 6px;
   }
 
   .head-top span:first-child {
-    max-width: calc(100% - 48px);
-    font-size: clamp(0.66rem, 3.7vw, 0.82rem);
-    letter-spacing: 0.018em;
+    height: 44px;
+    max-width: 160px;
+  }
+
+  .head-top .logo,
+  .head-top .site-logo,
+  .head-top .brand-logo {
+    height: 44px;
+    max-width: 160px;
   }
 
   .head-top span:last-child,
@@ -1381,18 +1459,17 @@ input[type="submit"] {
     width: 38px;
     height: 38px;
     flex: 0 0 38px;
-    font-size: 1.05rem;
+  }
+
+  .head-top span:last-child::before,
+  .menu-btn::before {
+    width: 18px;
+    height: 12px;
   }
 
   .sidenav {
     width: min(315px, calc(100% - 14px));
-    padding: 20px;
-  }
-
-  .sidenav::before {
-    width: calc(100% - 54px);
-    margin-right: 54px;
-    font-size: 1.32rem;
+    padding: 68px 20px 20px;
   }
 
   .navbar li a {
