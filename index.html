@@ -9,7 +9,6 @@
 
     <link rel="icon" href="images/logo.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
   </head>
 
   <body>
@@ -26,7 +25,14 @@
         </a>
 
         <nav class="site-nav" aria-label="Main navigation">
-          <button type="button" id="nav-btn" class="menu-btn" aria-label="Open navigation menu">
+          <button
+            type="button"
+            id="nav-btn"
+            class="menu-btn"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="sidenav"
+          >
             Menu
             <i class="fas fa-bars" aria-hidden="true"></i>
           </button>
@@ -56,8 +62,10 @@
       <ul class="navbar">
         <li><a href="#header">home</a></li>
         <li><a href="#services">services</a></li>
-        <li><a href="#booking">booking</a></li>
+        <li><a href="#booking">book now</a></li>
         <li><a href="#rooms">rooms</a></li>
+        <li><a href="#meeting-rooms">conference room</a></li>
+        <li><a href="#Restaurants">restaurant</a></li>
       </ul>
     </nav>
 
@@ -193,18 +201,19 @@
       </section>
 
       <section class="book" id="booking" aria-labelledby="booking-title">
-        <h2 id="booking-title" class="booking-title">Request Your Booking</h2>
+        <h2 id="booking-title" class="visually-hidden">Booking request form</h2>
 
         <form class="book-form" id="booking-form" novalidate>
           <div class="form-item">
             <label for="room-choice">Room Choice:</label>
             <select id="room-choice" name="room-choice" required>
-              <option value="">Select room type</option>
-              <option value="Executive High Luxury Room">Executive High Luxury Room - 100,000 TShs / Night</option>
-              <option value="Executive Medium Room">Executive Medium Room - 80,000 TShs / Night</option>
-              <option value="Executive Standard Room Double Bed">Executive Standard Room Double Bed - 70,000 TShs / Night</option>
-              <option value="Executive Standard Room Single Bed">Executive Standard Room Single Bed - 60,000 TShs / Night</option>
-              <option value="Executive Conference Room">Executive Conference Room - 150,000 TShs / 8 hours</option>
+              <option value="">Select room</option>
+              <option value="Executive High Luxury Room">Executive High Luxury Room</option>
+              <option value="Executive Medium Room">Executive Medium Room</option>
+              <option value="Executive Standard Room - Double Bed">Executive Standard Room - Double Bed</option>
+              <option value="Executive Standard Room - Single Bed">Executive Standard Room - Single Bed</option>
+              <option value="Executive Conference Room">Executive Conference Room</option>
+              <option value="Restaurant / Catering Booking">Restaurant / Catering Booking</option>
             </select>
           </div>
 
@@ -225,7 +234,7 @@
 
           <div class="form-item">
             <label for="children">Children:</label>
-            <input type="number" min="0" max="20" value="0" id="children" name="children" required>
+            <input type="number" min="0" max="20" value="0" id="children" name="children">
           </div>
 
           <div class="form-item">
@@ -235,14 +244,14 @@
 
           <div class="form-item">
             <button type="submit" class="btn booking-submit-btn">
-              Send WhatsApp Request
+              Send Booking Request
             </button>
           </div>
-        </form>
 
-        <p class="booking-note" id="booking-note" aria-live="polite">
-          Fill in your booking details, then send your request directly on WhatsApp.
-        </p>
+          <p class="booking-note" id="booking-note" aria-live="polite">
+            On phones, your booking request opens WhatsApp. On computers, laptops, and tablets, it opens your email app.
+          </p>
+        </form>
       </section>
 
       <section class="rooms sec-width" id="rooms">
@@ -376,7 +385,7 @@
               <button
                 type="button"
                 class="btn room-book-btn"
-                data-room="Executive Standard Room Double Bed"
+                data-room="Executive Standard Room - Double Bed"
               >
                 book now
               </button>
@@ -420,7 +429,7 @@
               <button
                 type="button"
                 class="btn room-book-btn"
-                data-room="Executive Standard Room Single Bed"
+                data-room="Executive Standard Room - Single Bed"
               >
                 book now
               </button>
@@ -442,23 +451,28 @@
 
             <div class="meeting-room-text">
               <h3>Executive Conference Room</h3>
+
               <ul>
                 <li>Comfortable meeting space for business sessions and private events.</li>
                 <li>Suitable for training, presentations, group discussions and formal gatherings.</li>
                 <li>Catering and restaurant support available on request.</li>
               </ul>
+
               <p>
                 Host productive meetings and special gatherings in a comfortable conference setting supported
                 by Hedaru Palace Hotel hospitality. The space is suitable for business meetings, workshops,
                 training sessions and private events.
               </p>
+
               <p>
                 Guests can combine meeting-room use with catering, restaurant service, bar service and hotel
                 accommodation for a convenient full-service event experience.
               </p>
+
               <p class="rate">
                 <span>150,000.00TShs</span> Per 8 hours
               </p>
+
               <button
                 type="button"
                 class="btn room-book-btn"
@@ -488,24 +502,33 @@
 
             <div class="Restaurant-text">
               <h3>Restaurant</h3>
+
               <ul>
                 <li>Fresh meals served in a welcoming hotel restaurant environment.</li>
                 <li>Breakfast, lunch, dinner and guest dining support available.</li>
                 <li>Suitable for hotel guests, business visitors and private dining needs.</li>
               </ul>
+
               <p>
                 Enjoy a relaxed dining experience at Hedaru Palace Hotel restaurant, where guests can
                 enjoy convenient meals without leaving the hotel. The restaurant is suitable for travellers,
                 business guests and visitors looking for a comfortable place to dine.
               </p>
+
               <p>
                 The hotel also supports catering for meetings and special occasions, making it easy to combine
                 accommodation, dining and event services in one place.
               </p>
+
               <p class="rate">
                 <span>Fresh meals available</span>
               </p>
-              <button type="button" class="btn" id="restaurant-booking-btn">
+
+              <button
+                type="button"
+                class="btn"
+                id="restaurant-booking-btn"
+              >
                 book now
               </button>
             </div>
@@ -518,6 +541,7 @@
       <div class="footer-container">
         <section aria-labelledby="footer-about-title">
           <h2 id="footer-about-title">About Us</h2>
+
           <p>
             Located in Hedaru, Hedaru Palace Hotel offers comfortable accommodation with a restaurant,
             bar, free Wi-Fi, room service, 24-hour front desk support and convenient guest facilities.
@@ -530,7 +554,7 @@
               <li>
                 <a
                   class="social-link"
-                  href="https://www.youtube.com/@hedaruPalaceHotel"
+                  href="http://www.youtube.com/@hedaruPalaceHotel"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Visit Hedaru Palace Hotel on YouTube"
@@ -644,9 +668,11 @@
         </section>
 
         <p class="footer-copyright">
-          Copyright &copy; 2026 Hedaru Palace Hotel
+          &copy; 2026 Hedaru Palace Hotel. All rights reserved.
         </p>
       </div>
     </footer>
+
+    <script src="script.js" defer></script>
   </body>
 </html>
