@@ -79,6 +79,8 @@ window.addEventListener('click', function(event){
 
 document.addEventListener("DOMContentLoaded", () => {
   const whatsappPhoneNumber = "255625888777";
+  const bookingEmailAddress = "hedarupalace@gmail.com";
+  const mobilePhoneQuery = window.matchMedia("(max-width: 600px)");
 
   const navBtn = document.getElementById("nav-btn");
   const cancelBtn = document.getElementById("cancel-btn");
@@ -90,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const bookingForm = document.getElementById("booking-form");
   const bookingSection = document.getElementById("booking");
   const bookingNote = document.getElementById("booking-note");
+  const bookingSubmitBtn = document.querySelector(".booking-submit-btn");
 
   const roomChoice = document.getElementById("room-choice");
   const checkinDate = document.getElementById("checkin-date");
@@ -110,6 +113,16 @@ document.addEventListener("DOMContentLoaded", () => {
   if (checkoutDate) {
     checkoutDate.min = today;
   }
+
+  const isMobilePhoneView = () => mobilePhoneQuery.matches;
+
+  const updateBookingButtonText = () => {
+    if (!bookingSubmitBtn) return;
+
+    bookingSubmitBtn.textContent = isMobilePhoneView()
+      ? "Send WhatsApp Request"
+      : "Send Email Request";
+  };
 
   const openNavigation = () => {
     if (!sidenav || !modal) return;
@@ -151,12 +164,12 @@ document.addEventListener("DOMContentLoaded", () => {
     bookingNote.style.color = isError ? "#fecaca" : "";
   };
 
-  const isValidPositiveNumber = (value, min, max) => {
+  const isValidWholeNumber = (value, min, max) => {
     const number = Number(value);
     return Number.isInteger(number) && number >= min && number <= max;
   };
 
-  const buildWhatsAppMessage = () => {
+  const buildBookingMessage = () => {
     const selectedRoom = roomChoice.value.trim();
     const checkin = checkinDate.value;
     const checkout = checkoutDate.value;
@@ -164,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const childrenCount = children.value;
     const roomCount = roomsCount.value;
 
-    const message = [
+    return [
       "Hello Hedaru Palace Hotel,",
       "",
       "I would like to request a booking.",
@@ -181,16 +194,12 @@ document.addEventListener("DOMContentLoaded", () => {
       "Special request:",
       "",
       "Please confirm availability and total price. Thank you."
-    ];
-
-    return message.join("\n");
+    ].join("\n");
   };
 
   const validateBookingForm = () => {
-    const selectedRoom = roomChoice.value.trim();
-
-    if (!selectedRoom) {
-      showBookingMessage("Please select a room choice before sending your WhatsApp request.", true);
+    if (!roomChoice.value.trim()) {
+      showBookingMessage("Please select a room choice before sending your booking request.", true);
       roomChoice.focus();
       return false;
     }
@@ -213,25 +222,50 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     }
 
-    if (!isValidPositiveNumber(adults.value, 1, 20)) {
+    if (!isValidWholeNumber(adults.value, 1, 20)) {
       showBookingMessage("Please enter a valid number of adults between 1 and 20.", true);
       adults.focus();
       return false;
     }
 
-    if (!isValidPositiveNumber(children.value, 0, 20)) {
+    if (!isValidWholeNumber(children.value, 0, 20)) {
       showBookingMessage("Please enter a valid number of children between 0 and 20.", true);
       children.focus();
       return false;
     }
 
-    if (!isValidPositiveNumber(roomsCount.value, 1, 10)) {
+    if (!isValidWholeNumber(roomsCount.value, 1, 10)) {
       showBookingMessage("Please enter a valid number of rooms between 1 and 10.", true);
       roomsCount.focus();
       return false;
     }
 
     return true;
+  };
+
+  const sendBookingRequest = () => {
+    const message = buildBookingMessage();
+
+    if (isMobilePhoneView()) {
+      const whatsappUrl = `https://wa.me/${whatsappPhoneNumber}?text=${encodeURIComponent(message)}`;
+
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+      showBookingMessage(
+        "Your WhatsApp booking request is ready. Please review and send it on WhatsApp."
+      );
+
+      return;
+    }
+
+    const subject = "Booking Request - Hedaru Palace Hotel";
+    const emailUrl = `mailto:${bookingEmailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+
+    window.location.href = emailUrl;
+
+    showBookingMessage(
+      "Your email booking request is ready. Please review and send it from your email app."
+    );
   };
 
   if (navBtn) {
@@ -274,14 +308,24 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       scrollToBooking();
-      showBookingMessage("Room selected. Complete your dates and guest details, then send your WhatsApp request.");
+
+      showBookingMessage(
+        "Room selected. Complete your dates and guest details, then send your booking request."
+      );
     });
   });
 
   if (restaurantBookingBtn) {
     restaurantBookingBtn.addEventListener("click", () => {
+      if (roomChoice) {
+        roomChoice.value = "Restaurant / Catering Booking";
+      }
+
       scrollToBooking();
-      showBookingMessage("For restaurant or catering booking, add your request in the WhatsApp special request line.");
+
+      showBookingMessage(
+        "Restaurant or catering selected. Add your request in the special request line before sending."
+      );
     });
   }
 
@@ -293,11 +337,13 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const message = buildWhatsAppMessage();
-      const whatsappUrl = `https://wa.me/${whatsappPhoneNumber}?text=${encodeURIComponent(message)}`;
-
-      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-      showBookingMessage("Your WhatsApp booking request is ready. Please review and send it on WhatsApp.");
+      sendBookingRequest();
     });
+  }
+
+  updateBookingButtonText();
+
+  if (typeof mobilePhoneQuery.addEventListener === "function") {
+    mobilePhoneQuery.addEventListener("change", updateBookingButtonText);
   }
 });
