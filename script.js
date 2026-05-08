@@ -102,7 +102,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const roomsCount = document.getElementById("rooms-count");
 
   const roomBookButtons = document.querySelectorAll(".room-book-btn");
-  const restaurantBookingBtn = document.getElementById("restaurant-booking-btn");
+  const directBookingButtons = document.querySelectorAll(".direct-booking-btn");
+
+  const serviceRestaurantBookingBtn = document.getElementById("service-restaurant-booking-btn");
+  const serviceConferenceBookingBtn = document.getElementById("service-conference-booking-btn");
+  const serviceVenueBookingBtn = document.getElementById("service-venue-booking-btn");
 
   const today = new Date().toISOString().split("T")[0];
 
@@ -169,7 +173,18 @@ document.addEventListener("DOMContentLoaded", () => {
     return Number.isInteger(number) && number >= min && number <= max;
   };
 
-  const buildBookingMessage = () => {
+  const openPreparedRequest = (subject, message) => {
+    if (isMobilePhoneView()) {
+      const whatsappUrl = `https://wa.me/${whatsappPhoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    const emailUrl = `mailto:${bookingEmailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+    window.location.href = emailUrl;
+  };
+
+  const buildRoomBookingMessage = () => {
     const selectedRoom = roomChoice.value.trim();
     const checkin = checkinDate.value;
     const checkout = checkoutDate.value;
@@ -180,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return [
       "Hello Hedaru Palace Hotel,",
       "",
-      "I would like to request a booking.",
+      "I would like to request a room booking.",
       "",
       `Room choice: ${selectedRoom}`,
       `Check-in date: ${checkin}`,
@@ -189,12 +204,84 @@ document.addEventListener("DOMContentLoaded", () => {
       `Children: ${childrenCount}`,
       `Number of rooms: ${roomCount}`,
       "",
-      "Guest name:",
+      "Full name:",
       "Phone number:",
+      "Email address:",
       "Special request:",
       "",
       "Please confirm availability and total price. Thank you."
     ].join("\n");
+  };
+
+  const getDirectBookingTemplate = (bookingType) => {
+    const templates = {
+      restaurant: {
+        subject: "Restaurant Table Booking Request - Hedaru Palace Hotel",
+        message: [
+          "Hello Hedaru Palace Hotel,",
+          "",
+          "I would like to request a restaurant table booking.",
+          "",
+          "Booking type: Restaurant table booking",
+          "Full name:",
+          "Preferred date:",
+          "Preferred time:",
+          "Number of guests:",
+          "Contact details:",
+          "Special requests:",
+          "",
+          "Please confirm availability. Thank you."
+        ].join("\n")
+      },
+
+      conference: {
+        subject: "Conference Room Booking Request - Hedaru Palace Hotel",
+        message: [
+          "Hello Hedaru Palace Hotel,",
+          "",
+          "I would like to request a conference room booking.",
+          "",
+          "Booking type: Conference room booking",
+          "Full name:",
+          "Company / organisation name:",
+          "Preferred date:",
+          "Preferred start time:",
+          "Preferred end time:",
+          "Number of guests:",
+          "Equipment needed:",
+          "Catering required: Yes / No",
+          "Contact details:",
+          "Special requests:",
+          "",
+          "Please confirm availability and total price. Thank you."
+        ].join("\n")
+      },
+
+      venue: {
+        subject: "Venue / Wedding Event Booking Request - Hedaru Palace Hotel",
+        message: [
+          "Hello Hedaru Palace Hotel,",
+          "",
+          "I would like to request a venue/event booking.",
+          "",
+          "Booking type: Wedding / private event venue booking",
+          "Full name:",
+          "Event type:",
+          "Preferred event date:",
+          "Preferred start time:",
+          "Preferred end time:",
+          "Estimated number of guests:",
+          "Catering required: Yes / No",
+          "Accommodation required: Yes / No",
+          "Contact details:",
+          "Special requests:",
+          "",
+          "Please confirm availability and available packages. Thank you."
+        ].join("\n")
+      }
+    };
+
+    return templates[bookingType] || null;
   };
 
   const validateBookingForm = () => {
@@ -243,29 +330,25 @@ document.addEventListener("DOMContentLoaded", () => {
     return true;
   };
 
-  const sendBookingRequest = () => {
-    const message = buildBookingMessage();
+  const sendRoomBookingRequest = () => {
+    const message = buildRoomBookingMessage();
+    const subject = "Room Booking Request - Hedaru Palace Hotel";
 
-    if (isMobilePhoneView()) {
-      const whatsappUrl = `https://wa.me/${whatsappPhoneNumber}?text=${encodeURIComponent(message)}`;
-
-      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-
-      showBookingMessage(
-        "Your WhatsApp booking request is ready. Please review and send it on WhatsApp."
-      );
-
-      return;
-    }
-
-    const subject = "Booking Request - Hedaru Palace Hotel";
-    const emailUrl = `mailto:${bookingEmailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-
-    window.location.href = emailUrl;
+    openPreparedRequest(subject, message);
 
     showBookingMessage(
-      "Your email booking request is ready. Please review and send it from your email app."
+      isMobilePhoneView()
+        ? "Your WhatsApp room booking request is ready. Please review and send it on WhatsApp."
+        : "Your email room booking request is ready. Please review and send it from your email app."
     );
+  };
+
+  const sendDirectBookingRequest = (bookingType) => {
+    const template = getDirectBookingTemplate(bookingType);
+
+    if (!template) return;
+
+    openPreparedRequest(template.subject, template.message);
   };
 
   if (navBtn) {
@@ -315,17 +398,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  if (restaurantBookingBtn) {
-    restaurantBookingBtn.addEventListener("click", () => {
-      if (roomChoice) {
-        roomChoice.value = "Restaurant / Catering Booking";
-      }
+  directBookingButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const bookingType = button.dataset.bookingType;
+      sendDirectBookingRequest(bookingType);
+    });
+  });
 
-      scrollToBooking();
+  if (serviceRestaurantBookingBtn) {
+    serviceRestaurantBookingBtn.addEventListener("click", () => {
+      sendDirectBookingRequest("restaurant");
+    });
+  }
 
-      showBookingMessage(
-        "Restaurant or catering selected. Add your request in the special request line before sending."
-      );
+  if (serviceConferenceBookingBtn) {
+    serviceConferenceBookingBtn.addEventListener("click", () => {
+      sendDirectBookingRequest("conference");
+    });
+  }
+
+  if (serviceVenueBookingBtn) {
+    serviceVenueBookingBtn.addEventListener("click", () => {
+      sendDirectBookingRequest("venue");
     });
   }
 
@@ -337,7 +431,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      sendBookingRequest();
+      sendRoomBookingRequest();
     });
   }
 
