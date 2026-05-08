@@ -66,6 +66,8 @@
         <li><a href="#rooms">rooms</a></li>
         <li><a href="#meeting-rooms">conference room</a></li>
         <li><a href="#Restaurants">restaurant</a></li>
+        <li><a href="#venue-events">venue events</a></li>
+        <li><a href="#hotel-gallery">gallery</a></li>
       </ul>
     </nav>
 
@@ -94,7 +96,9 @@
                 Enjoy freshly prepared meals in our welcoming restaurant, with convenient food service
                 available for guests who want comfort, quality, and flavour during their stay.
               </p>
-              <button type="button" class="btn">Know More</button>
+              <button type="button" class="btn" id="service-restaurant-booking-btn">
+                Book Table
+              </button>
             </div>
           </article>
 
@@ -174,7 +178,9 @@
                 From meetings to special occasions, our catering service helps you host guests with
                 delicious food and professional hospitality.
               </p>
-              <button type="button" class="btn">Know More</button>
+              <button type="button" class="btn" id="service-venue-booking-btn">
+                Book Event
+              </button>
             </div>
           </article>
 
@@ -194,14 +200,16 @@
                 Host business meetings, training sessions, and private events in our comfortable meeting
                 spaces with helpful hotel support.
               </p>
-              <button type="button" class="btn">Know More</button>
+              <button type="button" class="btn" id="service-conference-booking-btn">
+                Book Meeting
+              </button>
             </div>
           </article>
         </div>
       </section>
 
       <section class="book" id="booking" aria-labelledby="booking-title">
-        <h2 id="booking-title" class="visually-hidden">Booking request form</h2>
+        <h2 id="booking-title" class="visually-hidden">Room booking request form</h2>
 
         <form class="book-form" id="booking-form" novalidate>
           <div class="form-item">
@@ -212,8 +220,6 @@
               <option value="Executive Medium Room">Executive Deluxe Room</option>
               <option value="Executive Standard Room - Double Bed">Executive Superior Room</option>
               <option value="Executive Standard Room - Single Bed">Executive Business Room</option>
-              <option value="Executive Conference Room">Executive Conference Room</option>
-              <option value="Restaurant / Catering Booking">Restaurant / Catering Booking</option>
             </select>
           </div>
 
@@ -249,7 +255,7 @@
           </div>
 
           <p class="booking-note" id="booking-note" aria-live="polite">
-            On phones, your booking request opens WhatsApp. On computers, laptops, and tablets, it opens your email app.
+            On phones, your room booking request opens WhatsApp. On computers, laptops, and tablets, it opens your email app.
           </p>
         </form>
       </section>
@@ -264,7 +270,7 @@
             <div class="room-image">
               <img
                 src="Executive_Luxury_room.png"
-                alt="Executive High Luxury Room at Hedaru Palace Hotel"
+                alt="Executive Premier Suite at Hedaru Palace Hotel"
                 loading="lazy"
               >
             </div>
@@ -294,11 +300,7 @@
                 <span>$45</span> Per Night
               </p>
 
-              <button
-                type="button"
-                class="btn room-book-btn"
-                data-room="Executive High Luxury Room"
-              >
+              <button type="button" class="btn room-book-btn" data-room="Executive High Luxury Room">
                 book now
               </button>
             </div>
@@ -308,7 +310,7 @@
             <div class="room-image">
               <img
                 src="Executive Deluxe Room 02.png"
-                alt="Executive Medium Room at Hedaru Palace Hotel"
+                alt="Executive Deluxe Room at Hedaru Palace Hotel"
                 loading="lazy"
               >
             </div>
@@ -338,11 +340,7 @@
                 <span>$40</span> Per Night
               </p>
 
-              <button
-                type="button"
-                class="btn room-book-btn"
-                data-room="Executive Medium Room"
-              >
+              <button type="button" class="btn room-book-btn" data-room="Executive Medium Room">
                 book now
               </button>
             </div>
@@ -352,7 +350,7 @@
             <div class="room-image">
               <img
                 src="Executive_standard_room_01.png"
-                alt="Executive Standard Double Room at Hedaru Palace Hotel"
+                alt="Executive Superior Room at Hedaru Palace Hotel"
                 loading="lazy"
               >
             </div>
@@ -382,11 +380,7 @@
                 <span>$35</span> Per Night
               </p>
 
-              <button
-                type="button"
-                class="btn room-book-btn"
-                data-room="Executive Standard Room - Double Bed"
-              >
+              <button type="button" class="btn room-book-btn" data-room="Executive Standard Room - Double Bed">
                 book now
               </button>
             </div>
@@ -396,7 +390,7 @@
             <div class="room-image">
               <img
                 src="Executive_standard_room_02.png"
-                alt="Executive Standard Single Room at Hedaru Palace Hotel"
+                alt="Executive Business Room at Hedaru Palace Hotel"
                 loading="lazy"
               >
             </div>
@@ -426,11 +420,7 @@
                 <span>$30</span> Per Night
               </p>
 
-              <button
-                type="button"
-                class="btn room-book-btn"
-                data-room="Executive Standard Room - Single Bed"
-              >
+              <button type="button" class="btn room-book-btn" data-room="Executive Standard Room - Single Bed">
                 book now
               </button>
             </div>
@@ -473,12 +463,8 @@
                 <span>150,000.00TShs</span> Per 8 hours
               </p>
 
-              <button
-                type="button"
-                class="btn room-book-btn"
-                data-room="Executive Conference Room"
-              >
-                book now
+              <button type="button" class="btn direct-booking-btn" data-booking-type="conference">
+                book conference room
               </button>
             </div>
           </article>
@@ -524,13 +510,128 @@
                 <span>Fresh meals available</span>
               </p>
 
-              <button
-                type="button"
-                class="btn"
-                id="restaurant-booking-btn"
-              >
-                book now
+              <button type="button" class="btn direct-booking-btn" data-booking-type="restaurant">
+                book restaurant table
               </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="meeting-rooms sec-width" id="venue-events">
+        <div class="title2">
+          <h2>Venue & Wedding Events</h2>
+        </div>
+
+        <div class="meeting-room-container">
+          <article class="meeting-room">
+            <div class="meeting-room-image">
+              <img
+                src="Hotel_Front_building_image.png"
+                alt="Hedaru Palace Hotel venue for weddings and private events"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="meeting-room-text">
+              <h3>Wedding & Private Event Venue</h3>
+
+              <ul>
+                <li>Suitable for weddings, family celebrations, private events and special occasions.</li>
+                <li>Restaurant, catering, bar service and accommodation support available.</li>
+                <li>Helpful hotel team ready to support planning and guest arrangements.</li>
+              </ul>
+
+              <p>
+                Celebrate your special occasion at Hedaru Palace Hotel with a welcoming venue, comfortable
+                guest facilities and professional hospitality support. Our team can help you plan weddings,
+                private gatherings, family celebrations and special events.
+              </p>
+
+              <p>
+                Guests can combine venue hire with catering, restaurant service, bar service, conference
+                room use and room bookings for a complete event experience in one convenient location.
+              </p>
+
+              <p class="rate">
+                <span>Event packages available</span>
+              </p>
+
+              <button type="button" class="btn direct-booking-btn" data-booking-type="venue">
+                book venue event
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="rooms sec-width" id="hotel-gallery">
+        <div class="title">
+          <h2>Hotel Gallery</h2>
+        </div>
+
+        <div class="rooms-container">
+          <article class="room">
+            <div class="room-image">
+              <img
+                src="Hotel_Front_building_image.png"
+                alt="Front exterior of Hedaru Palace Hotel"
+                loading="lazy"
+              >
+            </div>
+            <div class="room-text">
+              <h3>Hotel Exterior</h3>
+              <p>
+                A welcoming hotel environment for guests arriving in Hedaru for business, leisure or events.
+              </p>
+            </div>
+          </article>
+
+          <article class="room">
+            <div class="room-image">
+              <img
+                src="Executive_Luxury_room.png"
+                alt="Luxury room with comfortable bed at Hedaru Palace Hotel"
+                loading="lazy"
+              >
+            </div>
+            <div class="room-text">
+              <h3>Comfortable Rooms</h3>
+              <p>
+                Relax in clean, comfortable rooms designed for peaceful stays and convenient guest comfort.
+              </p>
+            </div>
+          </article>
+
+          <article class="room">
+            <div class="room-image">
+              <img
+                src="Restaurant_room_01.png"
+                alt="Restaurant area at Hedaru Palace Hotel"
+                loading="lazy"
+              >
+            </div>
+            <div class="room-text">
+              <h3>Restaurant</h3>
+              <p>
+                Enjoy meals in a friendly hotel restaurant setting with food service available for guests.
+              </p>
+            </div>
+          </article>
+
+          <article class="room">
+            <div class="room-image">
+              <img
+                src="Executive_conference_room_01.png"
+                alt="Conference room at Hedaru Palace Hotel"
+                loading="lazy"
+              >
+            </div>
+            <div class="room-text">
+              <h3>Conference Facilities</h3>
+              <p>
+                Host meetings, workshops and professional sessions in a comfortable hotel conference space.
+              </p>
             </div>
           </article>
         </div>
@@ -611,6 +712,8 @@
           <a href="#services">Services</a>
           <a href="#Restaurants">Restaurant</a>
           <a href="#meeting-rooms">Conference Room</a>
+          <a href="#venue-events">Venue Events</a>
+          <a href="#hotel-gallery">Gallery</a>
         </nav>
 
         <nav aria-labelledby="footer-privacy-title">
